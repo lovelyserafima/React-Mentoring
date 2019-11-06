@@ -5,7 +5,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = merge(common, {
     optimization: {
-        minimizer: new OptimizeCSSAssetsPlugin({}),
+        minimizer: [ new OptimizeCSSAssetsPlugin({}) ]
     },
     plugins: [
         new MiniCssExtractPlugin({
