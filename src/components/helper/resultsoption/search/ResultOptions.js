@@ -1,6 +1,6 @@
 import React from 'react';
-import {ButtonsWrapper, Display, ResultsOptionsWrapper} from "../../style/helper/ResultOptions.Styles";
-import OptionButton from "./OptionButton";
+import {ButtonsWrapper, Display, ResultsOptionsWrapper} from "./ResultOptions.Styles";
+import OptionButton from "../../optionbutton/OptionButton";
 
 const ResultsOptions = ({ dataSize, changeSorting, sortingType }) => (
     <ResultsOptionsWrapper>

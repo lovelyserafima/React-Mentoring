@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {ButtonsWrapper, Display, InputWrapper, SearchButton, Wrapper} from "../../style/header/SearchForm.Styles";
-import OptionButton from "../helper/OptionButton";
+import {ButtonsWrapper, Display, InputWrapper, SearchButton, Wrapper} from "./SearchForm.Styles";
+import OptionButton from "../../helper/optionbutton/OptionButton";
 
 class SearchForm extends Component {
     state = {

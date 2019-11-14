@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieGenreWrapper from "../../style/body/MovieGenre.Styles";
+import MovieGenreWrapper from "./MovieGenre.Styles";
 
 const MovieGenre = ({ genres }) => (
     <MovieGenreWrapper>

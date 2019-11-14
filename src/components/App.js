@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import ErrorBoundary from "./ErrorBoundary";
-import SearchPage from "./pages/SearchPage";
-import DetailPage from "./pages/DetailPage";
-import {ChangePageWrapper} from "../style/App.Styles";
-import ChangePageButton from "./helper/ChangePageButton";
-import GlobalStyle from "../style/Global.Styles";
+import SearchPage from "./pages/searchpage/SearchPage";
+import DetailPage from "./pages/detailpage/DetailPage";
+import {ChangePageWrapper, FooterWrapper} from "./App.Styles";
+import ChangePageButton from "./helper/changepagebutton/ChangePageButton";
+import GlobalStyle from "./Global.Styles";
+import PageName from "./header/pagename/PageName";
 
 class App extends Component {
     state = {
@@ -14,7 +15,7 @@ class App extends Component {
     changePage = () => {
         const { pageType } = this.state;
         const newType = pageType === 'search' ? 'detail' : 'search';
-        this.setState(state => ({ pageType: newType }));
+        this.setState(() => ({ pageType: newType }));
     };
 
     render() {
@@ -22,10 +23,13 @@ class App extends Component {
         return (
             <ErrorBoundary>
                 <GlobalStyle />
-                {pageType === 'search' ? <SearchPage /> : <DetailPage />}
+                {pageType === 'search' ? <SearchPage /> : <DetailPage changePage={this.changePage} />}
                 <ChangePageWrapper>
                     <ChangePageButton changePage={this.changePage} />
                 </ChangePageWrapper>
+                <FooterWrapper>
+                    <PageName />
+                </FooterWrapper>
             </ErrorBoundary>
         );
     }

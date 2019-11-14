@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import PageName from "../header/PageName";
-import FormTitle from "../header/FormTitle";
-import {HeaderCSSGrid, SearchCSSGrid} from "../../style/pages/SeacrhPage.Styles";
-import SearchForm from "../header/SearchForm";
-import {fetchDefault, fetchFromSearch} from "../../util/dataLoader";
-import {sortingTypeForDisplay, sortingTypeForSearch} from "../../util/sortingTypeConstants";
-import ResultsOptions from "../helper/ResultOptions";
-import Results from "../body/Results";
+import PageName from "../../header/pagename/PageName";
+import FormTitle from "../../header/formtitle/FormTitle";
+import {HeaderCSSGrid, SearchCSSGrid} from "./SeacrhPage.Styles";
+import SearchForm from "../../header/searchform/SearchForm";
+import {fetchDefault, fetchFromSearch} from "../../../util/dataLoader";
+import {sortingTypeForDisplay, sortingTypeForSearch} from "../../../util/sortingTypeConstants";
+import ResultsOptions from "../../helper/resultsoption/search/ResultOptions";
+import Results from "../../body/results/Results";
 
 class SearchPage extends Component {
     state = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {MovieInfoWrapper, Title, Year} from "../../style/body/MovieInfo.Styles";
+import {MovieInfoWrapper, Title, Year} from "./MovieInfo.Styles";
 
 const MovieInfo = ({ title, release_date }) => {
     const releaseDate = release_date.slice(0, 4);

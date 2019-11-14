@@ -7,6 +7,7 @@ const joinParams = (paramsObject = {}) => {
 
 const requestMultiple = (api, paramsObject) => {
     const url = `${BASE_URL}/${api}?${joinParams(paramsObject)}`;
+    console.log(url);
     return fetch(url).then(r => r.json());
 };
 

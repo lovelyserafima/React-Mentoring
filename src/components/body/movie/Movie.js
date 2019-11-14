@@ -1,8 +1,8 @@
 import React from 'react';
-import MovieTileWrapper from "../../style/body/Movie.Styles";
-import MoviePoster from "./MoviePoster";
-import MovieInfo from "./MovieInfo";
-import MovieGenre from "./MovieGenre";
+import MovieTileWrapper from "./Movie.Styles";
+import MoviePoster from "../movieposter/MoviePoster";
+import MovieInfo from "../movieinfo/MovieInfo";
+import MovieGenre from "../moviegenre/MovieGenre";
 
 const Movie = ({ data: { poster_path, title, release_date, genres } }) => (
     <MovieTileWrapper>

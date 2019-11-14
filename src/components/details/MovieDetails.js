@@ -1,5 +1,5 @@
 import React from 'react';
-import MoviePoster from "../body/MoviePoster";
+import MoviePoster from "../body/movieposter/MoviePoster";
 import {
     DetailsWrapper,
     InfoWrapper,
@@ -7,7 +7,7 @@ import {
     MovieRating,
     MovieSummary,
     MovieTitle
-} from "../../style/details/MovieDetails.Styles";
+} from "./MovieDetails.Styles";
 
 const MovieDetails = ({ details }) => {
     const releaseDate = details.release_date.slice(0, 4);

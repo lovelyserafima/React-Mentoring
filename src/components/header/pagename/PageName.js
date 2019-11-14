@@ -1,5 +1,5 @@
 import React from 'react';
-import H1 from "../../style/header/PageName.Styles";
+import H1 from "./PageName.Styles";
 
 const PageName = () => <H1>netflixroulette</H1>;
 

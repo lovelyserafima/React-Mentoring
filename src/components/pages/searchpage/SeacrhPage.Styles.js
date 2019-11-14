@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import netflixBack from '../../../public/assets/img/netflix_back.jpg';
+import netflixBack from '../../../../public/assets/img/netflix_back.jpg';
 
 export const SearchCSSGrid = styled.div`
   display: grid;
