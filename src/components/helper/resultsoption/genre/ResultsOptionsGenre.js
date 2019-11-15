@@ -1,12 +1,10 @@
 import React from 'react';
 import {Display, ResultsOptionsWrapper} from "../search/ResultOptions.Styles";
 
-const ResultsOptions = ({ genres }) => {
+const ResultsOptions = ({ genre }) => {
     return (
         <ResultsOptionsWrapper>
-            {!!genres && <Display>Films movies by {genres.map(genre =>
-                <span key={genre}>{genre}, </span>
-            )}</Display>}
+            <Display>Films by {genre} genre</Display>
         </ResultsOptionsWrapper>
     );
 };

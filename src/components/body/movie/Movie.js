@@ -6,7 +6,7 @@ import MovieGenre from "../moviegenre/MovieGenre";
 
 const Movie = ({ data: { poster_path, title, release_date, genres } }) => (
     <MovieTileWrapper>
-        <MoviePoster posterImage={poster_path} />
+        <MoviePoster posterImage={poster_path}/>
         <MovieInfo title={title} release_date={release_date} />
         <MovieGenre genres={genres} />
     </MovieTileWrapper>

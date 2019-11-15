@@ -1,3 +1,5 @@
+import Constants from "../components/constants/Constants";
+
 const BASE_URL = 'http://react-cdp-api.herokuapp.com';
 
 const joinParams = (paramsObject = {}) => {
@@ -16,15 +18,22 @@ const requestOne = (api, id) => {
     return fetch(url).then(r => r.json());
 };
 
-export const fetchFromSearch = (searchString, sortingType, searchOption) =>
-    requestMultiple('movies', {
-        sortBy: sortingType,
-        sortOrder: 'desc',
+export const fetchByGenres = (searchString) =>
+    requestMultiple(Constants.MOVIES, {
         search: searchString,
-        searchBy: searchOption,
-        limit: 12
+        searchBy: Constants.GENRES,
+        limit: Constants.DEFAULT_LIMIT
     });
 
-export const fetchDefault = limit => requestMultiple('movies', { limit });
+export const fetchFromSearch = (searchString, sortingType, searchOption) =>
+    requestMultiple(Constants.MOVIES, {
+        sortBy: sortingType,
+        sortOrder: Constants.DESC,
+        search: searchString,
+        searchBy: searchOption,
+        limit: Constants.DEFAULT_LIMIT
+    });
 
-export const fetchById = id => requestOne('movies', id);
+export const fetchDefault = limit => requestMultiple(Constants.MOVIES, { limit });
+
+export const fetchById = id => requestOne(Constants.MOVIES, id);

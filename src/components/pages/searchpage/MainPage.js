@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import PageName from "../../header/pagename/PageName";
 import FormTitle from "../../header/formtitle/FormTitle";
-import {HeaderCSSGrid, SearchCSSGrid} from "./SeacrhPage.Styles";
+import {HeaderCSSGrid, SearchCSSGrid} from "./MainPage.Styles";
 import SearchForm from "../../header/searchform/SearchForm";
 import {fetchDefault, fetchFromSearch} from "../../../util/dataLoader";
 import {sortingTypeForDisplay, sortingTypeForSearch} from "../../../util/sortingTypeConstants";
 import ResultsOptions from "../../helper/resultsoption/search/ResultOptions";
 import Results from "../../body/results/Results";
+import Constants from "../../constants/Constants";
 
-class SearchPage extends Component {
+class MainPage extends Component {
     state = {
         data: '',
-        sortingType: 'release date',
-        searchOption: 'title'
+        sortingType: Constants.RELEASE_DATE,
+        searchOption: Constants.TITLE
     };
 
     componentDidMount = () => {
-        const LIMIT = 12;
-        fetchDefault(LIMIT).then(data =>
+        fetchDefault(Constants.DEFAULT_LIMIT).then(data =>
             this.setState(state => ({ data: data.data }))
         );
     };
@@ -45,8 +45,8 @@ class SearchPage extends Component {
         return (
             <SearchCSSGrid>
                 <HeaderCSSGrid>
-                    <PageName />
-                    <FormTitle />
+                    <PageName name={'netflixroulette'} />
+                    <FormTitle title={'FIND YOUR MOVIE'}/>
                     <SearchForm
                         handleFormSubmit={this.performSearch}
                         searchOption={searchOption}
@@ -64,4 +64,4 @@ class SearchPage extends Component {
     }
 }
 
-export default SearchPage;
+export default MainPage;

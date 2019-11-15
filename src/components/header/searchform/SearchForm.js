@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {ButtonsWrapper, Display, InputWrapper, SearchButton, Wrapper} from "./SearchForm.Styles";
 import OptionButton from "../../helper/optionbutton/OptionButton";
+import KeyboardConstants from "../../constants/KeyboardConstants";
+import Constants from "../../constants/Constants";
 
 class SearchForm extends Component {
     state = {
@@ -12,7 +14,7 @@ class SearchForm extends Component {
     };
 
     handleKeyPress = event => {
-        if (event.key === 'Enter') {
+        if (event.key === KeyboardConstants.ENTER) {
             this.handleFormSubmit();
         }
     };
@@ -36,7 +38,7 @@ class SearchForm extends Component {
 
                     <ButtonsWrapper>
                         <Display>Search by: </Display>
-                        {['title', 'genres'].map(searchTitle => (
+                        {[Constants.TITLE, Constants.GENRES].map(searchTitle => (
                             <OptionButton
                                 text={searchTitle}
                                 changeOption={changeSearch}
