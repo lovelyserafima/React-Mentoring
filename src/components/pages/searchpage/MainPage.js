@@ -3,55 +3,36 @@ import PageName from "../../header/pagename/PageName";
 import FormTitle from "../../header/formtitle/FormTitle";
 import {HeaderCSSGrid, SearchCSSGrid} from "./MainPage.Styles";
 import SearchForm from "../../header/searchform/SearchForm";
-import {fetchDefault, fetchFromSearch} from "../../../util/dataLoader";
-import {sortingTypeForDisplay, sortingTypeForSearch} from "../../../util/sortingTypeConstants";
+import {fetchDefault} from "../../../util/dataloader/dataLoader";
+import {sortingTypeForDisplay} from "../../../util/sortingTypeConstants";
 import ResultsOptions from "../../helper/resultsoption/search/ResultOptions";
 import Results from "../../body/results/Results";
-import Constants from "../../constants/Constants";
+import {DEFAULT_LIMIT, RELEASE_DATE} from "../../constants/CommonConstants";
 
 class MainPage extends Component {
     state = {
         data: '',
-        sortingType: Constants.RELEASE_DATE,
-        searchOption: Constants.TITLE
+        sortingType: RELEASE_DATE
     };
 
     componentDidMount = () => {
-        fetchDefault(Constants.DEFAULT_LIMIT).then(data =>
-            this.setState(state => ({ data: data.data }))
+        fetchDefault(DEFAULT_LIMIT).then(data =>
+            this.setState(() => ({ data: data.data }))
         );
     };
 
-    changeSorting = data => {
-        this.setState(state => ({ sortingType: data }));
-    };
-
-    performSearch = searchString => {
-        const { sortingType, searchOption } = this.state;
-        fetchFromSearch(
-            searchString,
-            sortingTypeForSearch[sortingType],
-            searchOption
-        ).then(data => this.setState(state => ({ data: data.data })));
-    };
-
-    changeSearch = data => {
-        event.preventDefault();
-        this.setState(state => ({ searchOption: data }));
+    setResults = results => {
+        this.setState({data: results})
     };
 
     render() {
-        const { data, sortingType, searchOption } = this.state;
+        const { data, sortingType} = this.state;
         return (
             <SearchCSSGrid>
                 <HeaderCSSGrid>
                     <PageName name={'netflixroulette'} />
                     <FormTitle title={'FIND YOUR MOVIE'}/>
-                    <SearchForm
-                        handleFormSubmit={this.performSearch}
-                        searchOption={searchOption}
-                        changeSearch={this.changeSearch}
-                    />
+                    <SearchForm resultsCallback={this.setResults}/>
                 </HeaderCSSGrid>
                 <ResultsOptions
                     dataSize={data.length}

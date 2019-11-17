@@ -13,7 +13,9 @@ class ErrorBoundary extends React.Component {
 
     componentDidCatch(error, info) {
         // Log error to the console
-        console.log(error, info);
+        if (!process.env.PRODUCTION_MODE) {
+            console.log(error, info);
+        }
     }
 
     render() {

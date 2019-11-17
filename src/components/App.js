@@ -6,16 +6,16 @@ import {ChangePageWrapper, FooterWrapper} from "./App.Styles";
 import ChangePageButton from "./helper/changepagebutton/ChangePageButton";
 import GlobalStyle from "./Global.Styles";
 import PageName from "./header/pagename/PageName";
-import Constants from "./constants/Constants";
+import {DETAILS_PAGE, MAIN_PAGE} from "./AppConstants";
 
 class App extends Component {
     state = {
-        pageType: Constants.MAIN_PAGE
+        pageType: MAIN_PAGE
     };
 
     changePage = () => {
         const { pageType } = this.state;
-        const newType = pageType === Constants.MAIN_PAGE ? Constants.DETAILS_PAGE : Constants.MAIN_PAGE;
+        const newType = pageType === MAIN_PAGE ? DETAILS_PAGE : MAIN_PAGE;
         this.setState(() => ({ pageType: newType }));
     };
 
@@ -24,7 +24,7 @@ class App extends Component {
         return (
             <ErrorBoundary>
                 <GlobalStyle />
-                {pageType === Constants.MAIN_PAGE ? <MainPage /> : <DetailPage changePage={this.changePage} />}
+                {pageType === MAIN_PAGE ? <MainPage /> : <DetailPage changePage={this.changePage} />}
 
                 {/*this is temporarily functionality*/}
                 <ChangePageWrapper>

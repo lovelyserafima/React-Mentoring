@@ -1,12 +1,32 @@
 import React, { Component } from 'react';
 import {ButtonsWrapper, Display, InputWrapper, SearchButton, Wrapper} from "./SearchForm.Styles";
 import OptionButton from "../../helper/optionbutton/OptionButton";
-import KeyboardConstants from "../../constants/KeyboardConstants";
-import Constants from "../../constants/Constants";
+import {ENTER} from "./SearchForm.Constants";
+import {GENRES, RELEASE_DATE, TITLE} from "../../constants/CommonConstants";
+import {fetchFromSearch} from "../../../util/dataloader/dataLoader";
+import {sortingTypeForSearch} from "../../../util/sortingTypeConstants";
 
 class SearchForm extends Component {
     state = {
-        searchValue: ''
+        searchValue: '',
+        searchOption: TITLE,
+        sortingType: RELEASE_DATE
+    };
+
+    performSearch = searchString => {
+        const { sortingType, searchOption } = this.state;
+        fetchFromSearch(
+            searchString,
+            sortingTypeForSearch(sortingType),
+            searchOption
+        ).then(data => {
+            this.props.resultsCallback(data.data);
+        })
+    };
+
+    changeSearch = (data, event) => {
+        event.preventDefault();
+        this.setState(({ searchOption: data }));
     };
 
     handleInputChange = event => {
@@ -14,18 +34,17 @@ class SearchForm extends Component {
     };
 
     handleKeyPress = event => {
-        if (event.key === KeyboardConstants.ENTER) {
+        if (event.key === ENTER) {
             this.handleFormSubmit();
         }
     };
 
     handleFormSubmit = () => {
-        this.props.handleFormSubmit(this.state.searchValue);
+        this.performSearch(this.state.searchValue);
     };
 
     render() {
-        const { searchOption, changeSearch } = this.props;
-        const { searchValue } = this.state;
+        const { searchValue, searchOption } = this.state;
         return (
             <Wrapper>
                 <form onSubmit={this.handleFormSubmit}>
@@ -38,10 +57,10 @@ class SearchForm extends Component {
 
                     <ButtonsWrapper>
                         <Display>Search by: </Display>
-                        {[Constants.TITLE, Constants.GENRES].map(searchTitle => (
+                        {[TITLE, GENRES].map(searchTitle => (
                             <OptionButton
                                 text={searchTitle}
-                                changeOption={changeSearch}
+                                changeOption={this.changeSearch}
                                 option={searchOption}
                                 key={searchTitle}
                             />

@@ -1,4 +1,5 @@
-import Constants from "../components/constants/Constants";
+import {DESC, MOVIES} from "./dataLoader.Constants";
+import {DEFAULT_LIMIT, GENRES} from "../../components/constants/CommonConstants";
 
 const BASE_URL = 'http://react-cdp-api.herokuapp.com';
 
@@ -19,21 +20,21 @@ const requestOne = (api, id) => {
 };
 
 export const fetchByGenres = (searchString) =>
-    requestMultiple(Constants.MOVIES, {
+    requestMultiple(MOVIES, {
         search: searchString,
-        searchBy: Constants.GENRES,
-        limit: Constants.DEFAULT_LIMIT
+        searchBy: GENRES,
+        limit: DEFAULT_LIMIT
     });
 
 export const fetchFromSearch = (searchString, sortingType, searchOption) =>
-    requestMultiple(Constants.MOVIES, {
+    requestMultiple(MOVIES, {
         sortBy: sortingType,
-        sortOrder: Constants.DESC,
+        sortOrder: DESC,
         search: searchString,
         searchBy: searchOption,
-        limit: Constants.DEFAULT_LIMIT
+        limit: DEFAULT_LIMIT
     });
 
-export const fetchDefault = limit => requestMultiple(Constants.MOVIES, { limit });
+export const fetchDefault = limit => requestMultiple(MOVIES, { limit });
 
-export const fetchById = id => requestOne(Constants.MOVIES, id);
+export const fetchById = id => requestOne(MOVIES, id);

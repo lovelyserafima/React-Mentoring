@@ -6,7 +6,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
 import ResultsOptions from "../../helper/resultsoption/genre/ResultsOptionsGenre";
 import Results from "../../body/results/Results";
-import {fetchByGenres, fetchById} from "../../../util/dataLoader";
+import {fetchByGenres, fetchById} from "../../../util/dataloader/dataLoader";
 
 class DetailPage extends Component {
     state = {
