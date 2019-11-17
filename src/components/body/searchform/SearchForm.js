@@ -15,11 +15,12 @@ class SearchForm extends Component {
 
     handleKeyPress = event => {
         if (event.key === ENTER) {
-            this.handleFormSubmit();
+            this.handleFormSubmit(event);
         }
     };
 
-    handleFormSubmit = () => {
+    handleFormSubmit = event => {
+        event.preventDefault();
         this.props.handleFormSubmit(this.state.searchValue);
     };
 
@@ -46,7 +47,7 @@ class SearchForm extends Component {
                                 key={searchTitle}
                             />
                         ))}
-                        <SearchButton onClick={this.handleFormSubmit} type="button">
+                        <SearchButton type="submit">
                             Search
                         </SearchButton>
                     </ButtonsWrapper>

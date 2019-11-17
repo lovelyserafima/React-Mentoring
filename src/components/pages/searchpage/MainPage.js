@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import PageName from "../../header/pagename/PageName";
 import FormTitle from "../../header/formtitle/FormTitle";
 import {HeaderCSSGrid, SearchCSSGrid} from "./MainPage.Styles";
-import SearchForm from "../../header/searchform/SearchForm";
+import SearchForm from "../../body/searchform/SearchForm";
 import {fetchDefault, fetchFromSearch} from "../../../util/dataloader/dataLoader";
-import {sortingTypeForDisplay, sortingTypeForSearch} from "../../../util/sortingTypeConstants";
 import ResultsOptions from "../../helper/resultsoption/search/ResultOptions";
 import Results from "../../body/results/Results";
-import {DEFAULT_LIMIT, RELEASE_DATE, TITLE} from "../../constants/CommonConstants";
+import {DEFAULT_LIMIT, sortingTypeForDisplay, sortingTypeForSearch, TITLE} from "../../constants/CommonConstants";
 
 class MainPage extends Component {
     state = {
         data: '',
-        sortingType: RELEASE_DATE,
+        sortingType: sortingTypeForDisplay["release date"],
         searchOption: TITLE
     };
 
@@ -28,6 +27,8 @@ class MainPage extends Component {
 
     performSearch = searchString => {
         const { sortingType, searchOption } = this.state;
+        console.log(sortingType);
+        console.log(sortingTypeForSearch[sortingType]);
         fetchFromSearch(
             searchString,
             sortingTypeForSearch[sortingType],

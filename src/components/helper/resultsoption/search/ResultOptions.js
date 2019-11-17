@@ -1,7 +1,7 @@
 import React from 'react';
 import {ButtonsWrapper, Display, ResultsOptionsWrapper} from "./ResultOptions.Styles";
 import OptionButton from "../../optionbutton/OptionButton";
-import {RELEASE_DATE} from "../../../constants/CommonConstants";
+import {sortingTypeForDisplay} from "../../../constants/CommonConstants";
 import {RATING} from "./ResultOptions.Constants";
 
 const ResultsOptions = ({ dataSize, changeSorting, sortingType }) => (
@@ -9,7 +9,7 @@ const ResultsOptions = ({ dataSize, changeSorting, sortingType }) => (
         <Display>{dataSize} movies found</Display>
         <ButtonsWrapper>
             <Display>Sort by:</Display>
-            {[RELEASE_DATE, RATING].map(title => (
+            {[sortingTypeForDisplay["release date"], RATING].map(title => (
                 <OptionButton
                     text={title}
                     changeOption={changeSorting}
