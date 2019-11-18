@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PageName from "../../header/pagename/PageName";
 import FormTitle from "../../header/formtitle/FormTitle";
 import {HeaderCSSGrid, SearchCSSGrid} from "./MainPage.Styles";
-import SearchForm from "../../body/searchform/SearchForm";
+import SearchForm from "../../header/searchform/SearchForm";
 import {fetchDefault, fetchFromSearch} from "../../../util/dataloader/dataLoader";
 import ResultsOptions from "../../helper/resultsoption/search/ResultOptions";
 import Results from "../../body/results/Results";
