@@ -13,14 +13,38 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+                test: /\.css$/,
+                loader: 'style-loader'
+            },
+            {
+                test: /\.css$/,
+                loader: 'css-loader',
+                query: {
+                    modules: true,
+                    localIdentName: '[name]__[local]___[hash:base64:5]'
+                }
+            },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                use: [
+                    'file-loader',
+                    {
+                        loader: 'image-webpack-loader'
+                    },
+                ],
             }
         ]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.scss']
     },
 
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: "./src/index.html"
+            template: "./public/index.html"
         })
     ],
     output: {
