@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultsOptionsSearch renders 1`] = `
+<div
+  className="ResultOptionsStyles__ResultsOptionsWrapper-sc-2ncvx-0 DjEDX"
+>
+  <p
+    className="ResultOptionsStyles__Display-sc-2ncvx-2 eInEox"
+  >
+     movies found
+  </p>
+  <div
+    className="ResultOptionsStyles__ButtonsWrapper-sc-2ncvx-1 bFwYWd"
+  >
+    <p
+      className="ResultOptionsStyles__Display-sc-2ncvx-2 eInEox"
+    >
+      Sort by:
+    </p>
+    <button
+      className="OptionButtonStyles__Button-sc-1qzec8i-0 hXMLoD"
+      onClick={[Function]}
+    >
+      release date
+    </button>
+    <button
+      className="OptionButtonStyles__Button-sc-1qzec8i-0 hXMLoD"
+      onClick={[Function]}
+    >
+      rating
+    </button>
+  </div>
+</div>
+`;

@@ -1,6 +1,7 @@
 import {DESC, MOVIES} from "./dataLoader.Constants";
 import {DEFAULT_LIMIT, GENRES} from "../../components/constants/CommonConstants";
 
+import fetch from 'node-fetch';
 const BASE_URL = 'http://react-cdp-api.herokuapp.com';
 
 const joinParams = (paramsObject = {}) => {

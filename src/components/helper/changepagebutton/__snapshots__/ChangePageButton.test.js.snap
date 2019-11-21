@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChangePageButton renders 1`] = `
+<button
+  className="ChangePageButtonStyles__Button-ao6v2h-0 fNKamK"
+>
+  change page
+</button>
+`;
