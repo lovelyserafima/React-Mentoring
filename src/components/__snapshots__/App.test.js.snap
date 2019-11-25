@@ -1,3 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App should render correctly 1`] = `ShallowWrapper {}`;
+exports[`App should render correctly 1`] = `
+<ErrorBoundary>
+  <GlobalStyleComponent />
+  <MainPage />
+  <AppStyles__ChangePageWrapper>
+    <ChangePageButton
+      changePage={[Function]}
+    />
+  </AppStyles__ChangePageWrapper>
+  <AppStyles__FooterWrapper>
+    <PageName
+      name="netflixroulette"
+    />
+  </AppStyles__FooterWrapper>
+</ErrorBoundary>
+`;
