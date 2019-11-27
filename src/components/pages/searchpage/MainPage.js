@@ -3,65 +3,58 @@ import PageName from "../../header/pagename/PageName";
 import FormTitle from "../../header/formtitle/FormTitle";
 import {HeaderCSSGrid, SearchCSSGrid} from "./MainPage.Styles";
 import SearchForm from "../../header/searchform/SearchForm";
-import {fetchDefault, fetchFromSearch} from "../../../util/dataloader/dataLoader";
 import ResultsOptions from "../../helper/resultsoption/search/ResultOptions";
 import Results from "../../body/results/Results";
-import {DEFAULT_LIMIT, sortingTypeForDisplay, sortingTypeForSearch, TITLE} from "../../constants/CommonConstants";
+import {DEFAULT_LIMIT, sortingTypeForDisplay, sortingTypeForSearch} from "../../constants/CommonConstants";
+import { connect } from 'react-redux';
+import { getDefaultData, getSearchData } from '../../../redux/actions';
 
-class MainPage extends Component {
-    state = {
-        data: '',
-        sortingType: sortingTypeForDisplay["release date"],
-        searchOption: TITLE
-    };
+const mapStateToProps = state => ({
+    movies: state.movies,
+    sortingType: state.sortingType,
+    searchOption: state.searchOption
+});
+
+export class MainPage extends Component {
 
     componentDidMount = () => {
-        fetchDefault(DEFAULT_LIMIT).then(data =>
-            this.setState(() => ({ data: data.data }))
-        );
+        this.props.getDefaultData(DEFAULT_LIMIT);
     };
 
     changeSorting = data => {
         this.setState(() => ({ sortingType: data }));
     };
 
-    performSearch = searchString => {
-        const { sortingType, searchOption } = this.state;
-        console.log(sortingType);
-        console.log(sortingTypeForSearch[sortingType]);
-        fetchFromSearch(
-            searchString,
-            sortingTypeForSearch[sortingType],
-            searchOption
-        ).then(data => this.setState(() => ({ data: data.data })));
-    };
-
     changeSearch = data => {
         this.setState(() => ({ searchOption: data }));
     };
 
+    performSearch = searchString => {
+        const { sortingType, searchOption } = this.props;
+        this.props.getSearchData(
+            searchString,
+            sortingTypeForSearch[sortingType],
+            searchOption
+        );
+    };
+
     render() {
-        const { data, sortingType, searchOption } = this.state;
+        const { movies, sortingType } = this.props;
         return (
             <SearchCSSGrid>
                 <HeaderCSSGrid>
                     <PageName name={'netflixroulette'} />
-                    <FormTitle title={'FIND YOUR MOVIE'}/>
-                    <SearchForm
-                        handleFormSubmit={this.performSearch}
-                        searchOption={searchOption}
-                        changeSearch={this.changeSearch}
-                    />
+                    <FormTitle title={'FIND YOUR MOVIE'} />
+                    <SearchForm handleFormSubmit={this.performSearch} />
                 </HeaderCSSGrid>
-                <ResultsOptions
-                    dataSize={data.length}
-                    changeSorting={this.changeSorting}
-                    sortingType={sortingTypeForDisplay[sortingType]}
-                />
-                {data ? <Results results={data} /> : <p>loading</p>}
+                <ResultsOptions sortingType={sortingTypeForDisplay[sortingType]} />
+                {movies ? <Results results={movies} /> : <p>loading</p>}
             </SearchCSSGrid>
         );
     }
 }
 
-export default MainPage;
+export default connect(
+    mapStateToProps,
+    { getDefaultData, getSearchData }
+)(MainPage);

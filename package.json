@@ -38,6 +38,8 @@
     "react-router": "^5.1.2",
     "redux": "^4.0.4",
     "redux-devtools": "^3.5.0",
+    "@redux-offline/redux-offline": "^2.5.1",
+    "redux-thunk": "^2.3.0",
     "source-map-explorer": "^2.1.0",
     "styled-components": "^4.4.1",
     "node-fetch": "^2.6.0"
@@ -68,6 +70,7 @@
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "redux-mock-store": "^1.5.3"
   }
 }
