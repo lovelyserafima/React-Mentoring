@@ -2,7 +2,9 @@ import {
     FETCH_DEFAULT,
     FETCH_FROM_SEARCH,
     CHANGE_SEARCH,
-    CHANGE_SORTING
+    CHANGE_SORTING,
+    UPDATE_SEARCH_VALUE, SELECT_MOVIE,
+    UN_SELECT_MOVIE
 } from '../constants/action-types';
 import { fetchFromSearch, fetchDefault } from '../../util/dataloader/dataLoader';
 
@@ -30,4 +32,16 @@ export function getSearchData(searchString, sortingType, searchOption) {
             }
         );
     };
+}
+
+export function updateSearchValue(searchValue) {
+    return { type: UPDATE_SEARCH_VALUE, payload: searchValue };
+}
+
+export function selectMovie(movieData) {
+    return { type: SELECT_MOVIE, payload: movieData };
+}
+
+export function unSelectMovie() {
+    return { type: UN_SELECT_MOVIE };
 }

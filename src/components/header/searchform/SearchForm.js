@@ -4,21 +4,21 @@ import OptionButton from "../../helper/optionbutton/OptionButton";
 import {ENTER} from "./SearchForm.Constants";
 import {GENRES, TITLE} from "../../constants/CommonConstants";
 import { connect } from 'react-redux';
-import {changeSearch} from "../../../redux/actions";
+import {changeSearch, updateSearchValue} from "../../../redux/actions";
 
-const mapStateToProps = state => ({ searchOption: state.searchOption });
+const mapStateToProps = state => ({
+    searchOption: state.searchOption,
+    searchValue: state.searchValue
+});
 
 export class SearchForm extends Component {
-    state = {
-        searchValue: ''
-    };
 
     changeSearch = text => {
         this.props.changeSearch(text);
     };
 
     handleInputChange = event => {
-        this.setState({ searchValue: event.target.value });
+        this.props.updateSearchValue(event.target.value);
     };
 
     handleKeyPress = event => {
@@ -29,12 +29,11 @@ export class SearchForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        this.props.handleFormSubmit(this.state.searchValue);
+        this.props.handleFormSubmit(this.props.searchValue);
     };
 
     render() {
-        const { searchOption } = this.props;
-        const { searchValue } = this.state;
+        const { searchOption, searchValue } = this.props;
         return (
             <Wrapper>
                 <form onSubmit={this.handleFormSubmit}>
@@ -68,5 +67,5 @@ export class SearchForm extends Component {
 
 export default connect(
     mapStateToProps,
-    { changeSearch }
+    { changeSearch, updateSearchValue }
 )(SearchForm);

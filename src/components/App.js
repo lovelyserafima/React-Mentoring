@@ -6,39 +6,31 @@ import {ChangePageWrapper, FooterWrapper} from "./App.Styles";
 import ChangePageButton from "./helper/changepagebutton/ChangePageButton";
 import GlobalStyle from "./Global.Styles";
 import PageName from "./header/pagename/PageName";
-import {DETAILS_PAGE, MAIN_PAGE} from "./AppConstants";
-import { Provider } from 'react-redux';
-import store from '../redux/store';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => ({
+    selectedMovie: state.selectedMovie
+});
 
 class App extends Component {
-    state = {
-        pageType: MAIN_PAGE
-    };
-
-    changePage = () => {
-        const { pageType } = this.state;
-        const newType = pageType === MAIN_PAGE ? DETAILS_PAGE : MAIN_PAGE;
-        this.setState(() => ({ pageType: newType }));
-    };
 
     render() {
-        const { pageType } = this.state;
+        const { selectedMovie } = this.props;
         return (
-            <Provider store={store}>
-                <ErrorBoundary>
-                    <GlobalStyle />
-                    {pageType === MAIN_PAGE ? <MainPage /> : <DetailPage />}
-                    <ChangePageWrapper>
-                        <ChangePageButton changePage={this.changePage} />
-                    </ChangePageWrapper>
+            <ErrorBoundary>
+                <GlobalStyle />
+                {selectedMovie === '' ? (
+                    <MainPage />
+                ) : (
+                    <DetailPage movieData={selectedMovie} />
+                )}
 
-                    <FooterWrapper>
-                        <PageName name={'netflixroulette'}/>
-                    </FooterWrapper>
-                </ErrorBoundary>
-            </Provider>
+                <FooterWrapper>
+                    <PageName name={'netflixroulette'}/>
+                </FooterWrapper>
+            </ErrorBoundary>
         );
     }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);

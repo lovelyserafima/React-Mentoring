@@ -2,21 +2,24 @@ import React, { Component } from 'react';
 import Detail, {HeaderCSSGrid} from "./DetailPage.Styles";
 import MovieDetails from "../../details/MovieDetails";
 import PageName from "../../header/pagename/PageName";
-import SearchIcon from "@material-ui/icons/Search";
-import IconButton from "@material-ui/core/IconButton";
 import ResultsOptions from "../../helper/resultsoption/genre/ResultsOptionsGenre";
 import Results from "../../body/results/Results";
 import {fetchByGenres, fetchById} from "../../../util/dataloader/dataLoader";
+import {connect} from "react-redux";
+import ChangePageButton from "../../helper/changepagebutton/ChangePageButton";
+
+const mapStateToProps = state => ({
+    selectedMovie: state.selectedMovie
+});
 
 class DetailPage extends Component {
     state = {
-        movie: '',
         similarMovies: '',
         selectedGenre: ''
     };
 
     componentDidMount = () => {
-        fetchById(15).then(data => {
+        fetchById(this.props.selectedMovie.id).then(data => {
             this.setState(() => ({ movie: data }));
             this.fetchSimilarMovies(data.genres[0]);
         });
@@ -41,9 +44,7 @@ class DetailPage extends Component {
                     <Detail>
                         {movie ? <MovieDetails details={movie} /> : <p>loading</p>}
                     </Detail>
-                    <IconButton onClick={this.props.changePage}>
-                        <SearchIcon color="secondary"/>
-                    </IconButton>
+                    <ChangePageButton />
                 </HeaderCSSGrid>
                 <ResultsOptions
                     genre={selectedGenre}
@@ -54,4 +55,4 @@ class DetailPage extends Component {
     }
 }
 
-export default DetailPage;
+export default connect(mapStateToProps)(DetailPage);
