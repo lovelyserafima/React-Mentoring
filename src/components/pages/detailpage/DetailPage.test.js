@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import DetailPage from './DetailPage';
+import {DetailPage} from './DetailPage';
 
 describe('DetailPage', () => {
     it('should render correctly', () => {

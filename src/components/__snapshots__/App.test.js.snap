@@ -3,12 +3,7 @@
 exports[`App should render correctly 1`] = `
 <ErrorBoundary>
   <GlobalStyleComponent />
-  <MainPage />
-  <AppStyles__ChangePageWrapper>
-    <ChangePageButton
-      changePage={[Function]}
-    />
-  </AppStyles__ChangePageWrapper>
+  <Connect(DetailPage) />
   <AppStyles__FooterWrapper>
     <PageName
       name="netflixroulette"

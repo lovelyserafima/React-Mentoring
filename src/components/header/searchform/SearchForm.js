@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 import {changeSearch, updateSearchValue} from "../../../redux/actions";
 
 const mapStateToProps = state => ({
-    searchOption: state.searchOption,
-    searchValue: state.searchValue
+    searchOption: state.searchReducer.searchOption,
+    searchValue: state.searchReducer.searchValue
 });
 
 export class SearchForm extends Component {

@@ -2,7 +2,7 @@
 
 exports[`Results should render correctly 1`] = `
 <ResultsWrapperStyles__ResultsWrapper>
-  <Movie
+  <Connect(Movie)
     data={
       Object {
         "budget": 200000000,
@@ -25,7 +25,7 @@ exports[`Results should render correctly 1`] = `
     }
     key="68721"
   />
-  <Movie
+  <Connect(Movie)
     data={
       Object {
         "budget": 140000000,

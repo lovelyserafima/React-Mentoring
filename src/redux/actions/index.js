@@ -1,12 +1,11 @@
 import {
-    FETCH_DEFAULT,
     FETCH_FROM_SEARCH,
     CHANGE_SEARCH,
     CHANGE_SORTING,
     UPDATE_SEARCH_VALUE, SELECT_MOVIE,
     UN_SELECT_MOVIE
 } from '../constants/action-types';
-import { fetchFromSearch, fetchDefault } from '../../util/dataloader/dataLoader';
+import { fetchFromSearch} from '../../util/dataloader/dataLoader';
 
 export function changeSearch(text) {
     return { type: CHANGE_SEARCH, payload: text };
@@ -16,16 +15,17 @@ export function changeSorting(text) {
     return { type: CHANGE_SORTING, payload: text };
 }
 
-export function getDefaultData(limit) {
-    return function thunk(dispatch) {
+//maybe will be useful in the future
+/*export function getDefaultData(limit) {
+    return dispatch => {
         return fetchDefault(limit).then(json => {
             dispatch({ type: FETCH_DEFAULT, payload: json.data });
         });
     };
-}
+}*/
 
 export function getSearchData(searchString, sortingType, searchOption) {
-    return function thunk(dispatch) {
+    return dispatch => {
         return fetchFromSearch(searchString, sortingType, searchOption).then(
             json => {
                 dispatch({ type: FETCH_FROM_SEARCH, payload: json.data });

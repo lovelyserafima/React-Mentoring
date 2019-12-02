@@ -11,17 +11,18 @@ import { getSearchData } from '../../../redux/actions';
 import LoadingWrapper from '../../Helper/Loading/Loading';
 
 const mapStateToProps = state => ({
-    movies: state.movies,
-    sortingType: state.sortingType,
-    searchOption: state.searchOption,
-    isSearching: state.isSearching,
-    error: state.isSearching
+    movies: state.movieReducer.movies,
+    sortingType: state.searchReducer.sortingType,
+    searchOption: state.searchReducer.searchOption,
+    isSearching: state.searchReducer.isSearching,
+    error: state.searchReducer.isSearching
 });
 
 export class MainPage extends Component {
 
     performSearch = searchString => {
         const { sortingType, searchOption, getSearchData, error } = this.props;
+        console.log(sortingType, searchOption, getSearchData, error);
         getSearchData(
             searchString,
             sortingTypeForSearch[sortingType],

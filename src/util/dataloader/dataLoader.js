@@ -35,7 +35,4 @@ export const fetchFromSearch = (searchString, sortingType, searchOption) =>
         searchBy: searchOption,
         limit: DEFAULT_LIMIT
     });
-
-export const fetchDefault = limit => requestMultiple(MOVIES, { limit });
-
 export const fetchById = id => requestOne(MOVIES, id);

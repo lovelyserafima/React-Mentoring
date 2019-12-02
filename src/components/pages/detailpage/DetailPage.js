@@ -9,10 +9,10 @@ import {connect} from "react-redux";
 import ChangePageButton from "../../helper/changepagebutton/ChangePageButton";
 
 const mapStateToProps = state => ({
-    selectedMovie: state.selectedMovie
+    selectedMovie: state.movieReducer.selectedMovie
 });
 
-class DetailPage extends Component {
+export class DetailPage extends Component {
     state = {
         similarMovies: '',
         selectedGenre: ''
@@ -55,4 +55,4 @@ class DetailPage extends Component {
     }
 }
 
-export default connect(mapStateToProps)(DetailPage);
+export const DetailPageContainer =  connect(mapStateToProps)(DetailPage);

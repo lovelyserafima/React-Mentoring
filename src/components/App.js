@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
 import ErrorBoundary from "./ErrorBoundary";
 import MainPage from "./pages/searchpage/MainPage";
-import DetailPage from "./pages/detailpage/DetailPage";
-import {ChangePageWrapper, FooterWrapper} from "./App.Styles";
-import ChangePageButton from "./helper/changepagebutton/ChangePageButton";
+import {DetailPageContainer} from "./pages/detailpage/DetailPage";
+import {FooterWrapper} from "./App.Styles";
 import GlobalStyle from "./Global.Styles";
 import PageName from "./header/pagename/PageName";
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
-    selectedMovie: state.selectedMovie
+    selectedMovie: state.movieReducer.selectedMovie
 });
 
-class App extends Component {
+export class App extends Component {
 
     render() {
         const { selectedMovie } = this.props;
+        {console.log(selectedMovie)}
         return (
             <ErrorBoundary>
                 <GlobalStyle />
                 {selectedMovie === '' ? (
                     <MainPage />
                 ) : (
-                    <DetailPage movieData={selectedMovie} />
+                    <DetailPageContainer movieData={selectedMovie} />
                 )}
 
                 <FooterWrapper>

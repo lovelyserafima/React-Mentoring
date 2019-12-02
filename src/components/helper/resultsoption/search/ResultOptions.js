@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 import {changeSorting} from "../../../../redux/actions";
 
 const mapStateToProps = state => ({
-    sortingType: state.sortingType,
-    dataSize: state.movies.length
+    sortingType: state.searchReducer.sortingType,
+    dataSize: state.movieReducer.movies.length
 });
 
 export class ResultsOptions extends Component {
