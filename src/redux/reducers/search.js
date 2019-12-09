@@ -1,5 +1,5 @@
 import {
-    CHANGE_SEARCH, CHANGE_SORTING,
+    CHANGE_SEARCH, CHANGE_SORTING, SEARCH_BY_ID_SUCCESS, SEARCH_FAILURE, SEARCH_STARTED,
     UN_SELECT_MOVIE,
     UPDATE_SEARCH_VALUE
 } from "../constants/action-types";
@@ -24,6 +24,17 @@ export default function searchReducer(state = initialState, action) {
             return { ...state, sortingType: action.payload };
         case UN_SELECT_MOVIE:
             return { ...state, selectedMovie: '' };
+        case SEARCH_BY_ID_SUCCESS:
+            return {
+                ...state,
+                selectedMovie: action.payload,
+                isSearching: false,
+                error: false
+            };
+        case SEARCH_STARTED:
+            return { ...state, isSearching: true, error: false };
+        case SEARCH_FAILURE:
+            return { ...state, isSearching: false, error: true };
         default:
             return state;
     }

@@ -7,6 +7,8 @@ import Results from "../../body/results/Results";
 import {fetchByGenres, fetchById} from "../../../util/dataloader/dataLoader";
 import {connect} from "react-redux";
 import ChangePageButton from "../../helper/changepagebutton/ChangePageButton";
+import { getMovieDataById } from '../../../redux/actions';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => ({
     selectedMovie: state.movieReducer.selectedMovie
@@ -18,9 +20,18 @@ export class DetailPage extends Component {
         selectedGenre: ''
     };
 
+    static getDerivedStateFromProps(props, state) {
+        const { id } = props.match.params;
+        const { getMovieDataById, selectedMovie } = props;
+        if (!selectedMovie) {
+            getMovieDataById(id);
+        }
+        return state;
+    }
+
     componentDidMount = () => {
         fetchById(this.props.selectedMovie.id).then(data => {
-            this.setState(() => ({ movie: data }));
+            this.setState(() => ({ selectedMovie: data }));
             this.fetchSimilarMovies(data.genres[0]);
         });
     };
@@ -36,13 +47,13 @@ export class DetailPage extends Component {
     }
 
     render() {
-        const { movie, similarMovies, selectedGenre} = this.state;
+        const { selectedMovie, similarMovies, selectedGenre} = this.state;
         return (
             <div>
                 <HeaderCSSGrid>
                     <PageName name={'netflixroulette'}/>
                     <Detail>
-                        {movie ? <MovieDetails details={movie} /> : <p>loading</p>}
+                        {selectedMovie ? <MovieDetails details={selectedMovie} /> : <p>loading</p>}
                     </Detail>
                     <ChangePageButton />
                 </HeaderCSSGrid>
@@ -55,4 +66,9 @@ export class DetailPage extends Component {
     }
 }
 
-export const DetailPageContainer =  connect(mapStateToProps)(DetailPage);
+export default withRouter(
+    connect(
+        mapStateToProps,
+        { getMovieDataById }
+    )(DetailPage)
+);

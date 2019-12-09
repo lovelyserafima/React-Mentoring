@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import ErrorBoundary from "./ErrorBoundary";
 import MainPage from "./pages/searchpage/MainPage";
-import {DetailPageContainer} from "./pages/detailpage/DetailPage";
-import {FooterWrapper} from "./App.Styles";
-import GlobalStyle from "./Global.Styles";
-import PageName from "./header/pagename/PageName";
+import DetailPage from "./pages/detailpage/DetailPage";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import NotFoundPage from "./pages/notfound/NotFound";
 
 const mapStateToProps = state => ({
     selectedMovie: state.movieReducer.selectedMovie
@@ -14,21 +12,15 @@ const mapStateToProps = state => ({
 export class App extends Component {
 
     render() {
-        const { selectedMovie } = this.props;
-        {console.log(selectedMovie)}
         return (
-            <ErrorBoundary>
-                <GlobalStyle />
-                {selectedMovie === '' ? (
-                    <MainPage />
-                ) : (
-                    <DetailPageContainer movieData={selectedMovie} />
-                )}
-
-                <FooterWrapper>
-                    <PageName name={'netflixroulette'}/>
-                </FooterWrapper>
-            </ErrorBoundary>
+            <>
+                <Switch>
+                    <Route path="/" exact component={MainPage} />
+                    <Route path="/search/:term" component={MainPage} />
+                    <Route path="/film/:id" component={DetailPage} />
+                    <Route path="*" component={NotFoundPage} />
+                </Switch>
+            </>
         );
     }
 }
