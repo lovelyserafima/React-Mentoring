@@ -6,7 +6,8 @@ import ResultsOptions from "../../helper/resultsoption/genre/ResultsOptionsGenre
 import Results from "../../body/results/Results";
 import {connect} from "react-redux";
 import ChangePageButton from "../../helper/changepagebutton/ChangePageButton";
-import {getMoviesByGenre} from "../../../redux/actions";
+import {getMoviesByGenre, getMovieDataById} from "../../../redux/actions";
+import LoadingWrapper from "../../helper/loading/Loading";
 
 const mapStateToProps = state => ({
     selectedMovie: state.movieReducer.selectedMovie,
@@ -14,34 +15,40 @@ const mapStateToProps = state => ({
     error: state.searchReducer.isSearching
 });
 
-export class DetailPage extends Component {
+class DetailPage extends Component {
 
-    componentDidMount = () => {
-        const { getMoviesByGenre, selectedMovie } = this.props;
-        getMoviesByGenre(
-            selectedMovie.genres[0]
-        );
-    };
+    //state = {};
+
+    componentDidMount() {
+        const { id } = this.props.match.params;
+        const { getMovieDataById, getMoviesByGenre, selectedMovie } = this.props;
+        if (!selectedMovie) {
+            getMovieDataById(id);
+        }
+        {selectedMovie ? getMoviesByGenre(selectedMovie.genres[0]) : {}}
+    }
+
+    /*static getDerivedStateFromProps(props, state) {
+
+    }*/
 
     render() {
         const { selectedMovie, similarMovies} = this.props;
-        console.log("in render"  + similarMovies);
+        console.log("in render"  + selectedMovie);
         return (
             <div>
                 <HeaderCSSGrid>
                     <PageName name={'netflixroulette'}/>
                     <Detail>
-                        {selectedMovie ? <MovieDetails details={selectedMovie} /> : <p>loading</p>}
+                        {selectedMovie ? <MovieDetails details={selectedMovie} /> : <LoadingWrapper />}
                     </Detail>
                     <ChangePageButton />
                 </HeaderCSSGrid>
-                <ResultsOptions
-                    genre={selectedMovie.genres[0]}
-                />
-                {similarMovies ? <Results results={similarMovies} /> : <p>loading</p>}
+                {!selectedMovie ? <LoadingWrapper/> : <ResultsOptions genre={ selectedMovie.genres[0] } />}
+                {similarMovies ? <Results results={similarMovies} /> : <LoadingWrapper/>}
             </div>
         );
     }
 }
 
-export const DetailPageContainer =  connect(mapStateToProps, { getMoviesByGenre })(DetailPage);
+export default DetailPage = connect(mapStateToProps, { getMoviesByGenre, getMovieDataById })(DetailPage);

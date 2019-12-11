@@ -5,7 +5,7 @@ import {
     UPDATE_SEARCH_VALUE, SELECT_MOVIE,
     UN_SELECT_MOVIE, FETCH_SIMILAR_MOVIES_BY_GENRE
 } from '../constants/action-types';
-import {fetchByGenres, fetchFromSearch} from '../../util/dataloader/dataLoader';
+import {fetchByGenres, fetchById, fetchFromSearch} from '../../util/dataloader/dataLoader';
 
 export function changeSearch(text) {
     return { type: CHANGE_SEARCH, payload: text };
@@ -33,6 +33,16 @@ export function getMoviesByGenre(genre) {
             }
         )
     }
+}
+
+export function getMovieDataById(id) {
+    return dispatch => {
+        return fetchById(id).then(
+            json => {
+                dispatch({ type: SELECT_MOVIE, payload: json.data})
+            }
+        )
+    };
 }
 
 export function updateSearchValue(searchValue) {

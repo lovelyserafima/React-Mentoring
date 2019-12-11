@@ -21,10 +21,6 @@ module.exports = {
             {
                 test: /\.css$/,
                 loader: 'css-loader',
-                query: {
-                    modules: true,
-                    localIdentName: '[name]__[local]___[hash:base64:5]'
-                }
             },
             {
                 test: /\.(gif|png|jpe?g|svg)$/i,
@@ -50,5 +46,10 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
+
+    devServer: {
+        historyApiFallback: true,
+    }
 };

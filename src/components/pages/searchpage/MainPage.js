@@ -8,8 +8,8 @@ import Results from "../../body/results/Results";
 import {sortingTypeForDisplay, sortingTypeForSearch} from "../../constants/CommonConstants";
 import { connect } from 'react-redux';
 import { getSearchData, updateSearchValue } from '../../../redux/actions';
-import LoadingWrapper from '../../Helper/Loading/Loading';
 import history from '../../history';
+import LoadingWrapper from "../../helper/loading/Loading";
 
 const mapStateToProps = state => ({
     movies: state.movieReducer.movies,
