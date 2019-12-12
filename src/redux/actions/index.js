@@ -39,7 +39,9 @@ export function getMovieDataById(id) {
     return dispatch => {
         return fetchById(id).then(
             json => {
-                dispatch({ type: SELECT_MOVIE, payload: json.data})
+                console.log("json in fetch " + json);
+                dispatch({ type: SELECT_MOVIE, payload: json});
+                return json;
             }
         )
     };

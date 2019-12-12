@@ -3,7 +3,7 @@ import {
     UN_SELECT_MOVIE,
     UPDATE_SEARCH_VALUE
 } from "../constants/action-types";
-import {sortingTypeForSearch, TITLE} from "../../components/constants/CommonConstants";
+import {sortingTypeForDisplay, sortingTypeForSearch, TITLE} from "../../components/constants/CommonConstants";
 
 const initialState = {
     searchOption: TITLE,
@@ -11,7 +11,7 @@ const initialState = {
     searchValue: '',
     isSearching: false,
     error: false,
-    sortingType: sortingTypeForSearch["release date"]
+    sortingType: sortingTypeForDisplay["release date"]
 };
 
 export default function searchReducer(state = initialState, action) {

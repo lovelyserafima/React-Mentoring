@@ -17,24 +17,22 @@ const mapStateToProps = state => ({
 
 class DetailPage extends Component {
 
-    //state = {};
-
     componentDidMount() {
         const { id } = this.props.match.params;
         const { getMovieDataById, getMoviesByGenre, selectedMovie } = this.props;
         if (!selectedMovie) {
-            getMovieDataById(id);
+            getMovieDataById(id).then(
+                movie => {
+                    getMoviesByGenre(movie.genres[0])
+                }
+            );
+        } else {
+            getMoviesByGenre(selectedMovie.genres[0]);
         }
-        {selectedMovie ? getMoviesByGenre(selectedMovie.genres[0]) : {}}
     }
-
-    /*static getDerivedStateFromProps(props, state) {
-
-    }*/
 
     render() {
         const { selectedMovie, similarMovies} = this.props;
-        console.log("in render"  + selectedMovie);
         return (
             <div>
                 <HeaderCSSGrid>
