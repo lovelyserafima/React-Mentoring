@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MainPage from "./pages/searchpage/MainPage";
 import DetailPage from "./pages/detailpage/DetailPage";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NotFoundPage from "./pages/notfound/NotFound";
 

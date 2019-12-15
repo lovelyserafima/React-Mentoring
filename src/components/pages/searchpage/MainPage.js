@@ -22,22 +22,19 @@ const mapStateToProps = state => ({
 
 export class MainPage extends Component {
 
-    state = {};
-
-    static getDerivedStateFromProps(props, state) {
-        const { term } = props.match.params; // receiving current search term from URL
-        const { searchValue } = props; // receiving stored search term
+    componentDidMount() {
+        const { term } = this.props.match.params; // receiving current search term from URL
+        const { searchValue } = this.props; // receiving stored search term
         const {
             sortingType,
             searchOption,
             getSearchData,
             updateSearchValue
-        } = props;
+        } = this.props;
         if (term && term !== searchValue) {
             getSearchData(term, sortingTypeForSearch[sortingType], searchOption);
             updateSearchValue(term);
         }
-        return state;
     }
 
     performSearch = searchString => {
