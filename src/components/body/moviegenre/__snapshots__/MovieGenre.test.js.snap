@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieGenre should render correctly 1`] = `
+<MovieGenreStyles__MovieGenreWrapper>
+  <span
+    key="Animation"
+  >
+    Animation 
+  </span>
+  <span
+    key="Family"
+  >
+    Family 
+  </span>
+</MovieGenreStyles__MovieGenreWrapper>
+`;

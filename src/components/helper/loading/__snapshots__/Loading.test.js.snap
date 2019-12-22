@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading renders 1`] = `
+<p
+  className="LoadingStyles__Loading-sc-6xllkp-0 ejzXfR"
+>
+  Loading...
+</p>
+`;

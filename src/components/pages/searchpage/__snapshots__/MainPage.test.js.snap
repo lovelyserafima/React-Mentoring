@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchPage should render correctly 1`] = `
+<MainPageStyles__SearchCSSGrid>
+  <MainPageStyles__HeaderCSSGrid>
+    <PageName
+      name="netflixroulette"
+    />
+    <FormTitle
+      title="FIND YOUR MOVIE"
+    />
+    <SearchForm
+      changeSearch={[Function]}
+      handleFormSubmit={[Function]}
+      searchOption="title"
+    />
+  </MainPageStyles__HeaderCSSGrid>
+  <ResultsOptions
+    changeSorting={[Function]}
+    dataSize={0}
+    sortingType="release date"
+  />
+  <p>
+    loading
+  </p>
+</MainPageStyles__SearchCSSGrid>
+`;

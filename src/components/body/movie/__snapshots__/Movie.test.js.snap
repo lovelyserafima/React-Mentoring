@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieTile should render correctly 1`] = `
+<MovieStyles__MovieTileWrapper>
+  <MoviePoster
+    posterImage="https://image.tmdb.org/t/p/w500/1Ilv6ryHUv6rt9zIsbSEJUmmbEi.jpg"
+  />
+  <MovieInfo
+    release_date="2013-04-18"
+    title="Iron Man 3"
+  />
+  <MovieGenre
+    genres={
+      Array [
+        "Action",
+        "Adventure",
+        "Science Fiction",
+      ]
+    }
+  />
+</MovieStyles__MovieTileWrapper>
+`;

@@ -1,8 +1,19 @@
 import React from 'react';
-import Button from "./ChangePageButton.Styles";
+import { connect } from 'react-redux';
+import { unSelectMovie } from '../../../redux/actions';
+import SearchIcon from "@material-ui/icons/Search";
+import IconButton from "@material-ui/core/IconButton";
+import { Link } from 'react-router-dom';
 
-const ChangePageButton = ({ changePage }) => (
-    <Button onClick={changePage}>change page</Button>
+export const ChangePageButton = ({ unSelectMovie }) => (
+    <Link to="/" onClick={() => unSelectMovie()}>
+        <IconButton id="changePageButton">
+            <SearchIcon color="secondary"/>
+        </IconButton>
+    </Link>
 );
 
-export default ChangePageButton;
+export default connect(
+    null,
+    { unSelectMovie }
+)(ChangePageButton);

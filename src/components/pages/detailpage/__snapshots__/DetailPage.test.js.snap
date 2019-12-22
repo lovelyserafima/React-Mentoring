@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailPage should render correctly 1`] = `
+<div>
+  <DetailPageStyles__HeaderCSSGrid>
+    <PageName
+      name="netflixroulette"
+    />
+    <DetailPageStyles__Detail>
+      <p>
+        loading
+      </p>
+    </DetailPageStyles__Detail>
+    <WithStyles(ForwardRef(IconButton))>
+      <SearchIcon
+        color="secondary"
+      />
+    </WithStyles(ForwardRef(IconButton))>
+  </DetailPageStyles__HeaderCSSGrid>
+  <ResultsOptions
+    genre=""
+  />
+  <p>
+    loading
+  </p>
+</div>
+`;

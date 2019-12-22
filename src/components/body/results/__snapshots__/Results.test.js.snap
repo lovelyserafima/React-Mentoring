@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Results should render correctly 1`] = `
+<ResultsWrapperStyles__ResultsWrapper>
+  <Connect(Movie)
+    data={
+      Object {
+        "budget": 200000000,
+        "genres": Array [
+          "Action",
+          "Adventure",
+          "Science Fiction",
+        ],
+        "id": 68721,
+        "overview": "When Tony Stark's world is torn apart by a formidable terrorist called the Mandarin, he starts an odyssey of rebuilding and retribution.",
+        "poster_path": "https://image.tmdb.org/t/p/w500/1Ilv6ryHUv6rt9zIsbSEJUmmbEi.jpg",
+        "release_date": "2013-04-18",
+        "revenue": 1215439994,
+        "runtime": 130,
+        "tagline": "Unleash the power behind the armor.",
+        "title": "Iron Man 3",
+        "vote_average": 6.8,
+        "vote_count": 10461,
+      }
+    }
+    key="68721"
+  />
+  <Connect(Movie)
+    data={
+      Object {
+        "budget": 140000000,
+        "genres": Array [
+          "Action",
+          "Science Fiction",
+          "Adventure",
+        ],
+        "id": 1726,
+        "overview": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+        "poster_path": "https://image.tmdb.org/t/p/w500/848chlIWVT41VtAAgyh9bWymAYb.jpg",
+        "release_date": "2008-04-30",
+        "revenue": 585174222,
+        "runtime": 126,
+        "tagline": "Heroes aren't born. They're built.",
+        "title": "Iron Man",
+        "vote_average": 7.4,
+        "vote_count": 10926,
+      }
+    }
+    key="1726"
+  />
+</ResultsWrapperStyles__ResultsWrapper>
+`;
