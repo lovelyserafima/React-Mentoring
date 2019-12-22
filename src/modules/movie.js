@@ -3,7 +3,7 @@ import {
     FETCH_SIMILAR_MOVIES_BY_GENRE,
     SELECT_MOVIE,
     UN_SELECT_MOVIE
-} from "../constants/action-types";
+} from "../redux/constants/action-types";
 
 const initialState = {
     movies: [],

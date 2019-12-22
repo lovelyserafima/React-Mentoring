@@ -1,12 +1,10 @@
 import { createBrowserHistory } from 'history';
-// export default createBrowserHistory();
 
-const history = createBrowserHistory();
+let history;
 
-// Get the current location.
-// Listen for changes to the current location.
-history.listen(() => {
+if (typeof document !== 'undefined') {
 
-});
+    history = createBrowserHistory();
+}
 
-export default history;
+export default history
