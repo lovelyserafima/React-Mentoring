@@ -56,7 +56,6 @@ export class MainPage extends Component {
 
     render() {
         const { movies, sortingType, isSearching } = this.props;
-        console.log("movies = " + movies, "sorting type = " + sortingType);
         return (
             <SearchCSSGrid>
                 <HeaderCSSGrid>
@@ -65,10 +64,10 @@ export class MainPage extends Component {
                     <SearchForm handleFormSubmit={this.performSearch} />
                 </HeaderCSSGrid>
                 <ResultsOptions sortingType={sortingTypeForDisplay[sortingType]} />
-                {isSearching || !movies ? (
+                {isSearching ? (
                     <LoadingWrapper />
                 ) : (
-                    !!movies.length && <Results results={movies} />
+                    movies.length !== 0 && <Results results={movies} />
                 )}
             </SearchCSSGrid>
         );

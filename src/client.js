@@ -6,8 +6,6 @@ import Root from './Root';
 import configureStore from './modules/configureStore';
 
 const store = configureStore(window.PRELOADED_STATE);
-console.log("window " + window.PRELOADED_STATE);
-console.log("store in client = " + store);
 
 const root = (
     <Root

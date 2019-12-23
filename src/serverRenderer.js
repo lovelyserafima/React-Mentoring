@@ -10,7 +10,7 @@ function renderHTML(html, preloadedState) {
       <html>
         <head>
           <meta charset=utf-8>
-          <title>React Server Side Rendering</title>
+          <title>Movies app</title>
           ${process.env.NODE_ENV === 'development' ? '' : '<link href="/css/main.css" rel="stylesheet" type="text/css">'}
         </head>
         <body>
@@ -54,8 +54,6 @@ export default function serverRenderer() {
 
         const htmlString = ReactDOM.renderToString(renderRoot());
         const preloadedState = store.getState();
-
-        console.log("preloadedstate = " + preloadedState);
 
         res.send(renderHTML(htmlString, preloadedState));
     };
