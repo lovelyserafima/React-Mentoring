@@ -1,9 +1,9 @@
 import {
     FETCH_FROM_SEARCH,
-    FETCH_SIMILAR_MOVIES_BY_GENRE,
+    FETCH_SIMILAR_MOVIES_BY_GENRE, RECEIVED_MOVIES,
     SELECT_MOVIE,
     UN_SELECT_MOVIE
-} from "../redux/constants/action-types";
+} from "./constants/action-types";
 
 const initialState = {
     movies: [],
@@ -21,6 +21,8 @@ export default function movieReducer(state = initialState, action) {
             return { ...state, selectedMovie: action.payload };
         case UN_SELECT_MOVIE:
             return {...state, selectedMovie: ''};
+        case RECEIVED_MOVIES:
+            return { ...state, movies: action.payload};
         default:
             return state;
     }

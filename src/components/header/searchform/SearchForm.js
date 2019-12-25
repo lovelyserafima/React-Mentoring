@@ -4,7 +4,7 @@ import OptionButton from "../../helper/optionbutton/OptionButton";
 import {ENTER} from "./SearchForm.Constants";
 import {GENRES, TITLE} from "../../constants/CommonConstants";
 import { connect } from 'react-redux';
-import {changeSearch, updateSearchValue} from "../../../redux/actions";
+import {changeSearch, updateSearchValue} from "../../../modules/actions";
 
 const mapStateToProps = state => ({
     searchOption: state.searchReducer.searchOption,

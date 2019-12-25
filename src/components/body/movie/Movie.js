@@ -4,7 +4,7 @@ import MoviePoster from "../movieposter/MoviePoster";
 import MovieInfo from "../movieinfo/MovieInfo";
 import MovieGenre from "../moviegenre/MovieGenre";
 import { connect } from 'react-redux';
-import {selectMovie} from "../../../redux/actions";
+import {selectMovie} from "../../../modules/actions";
 import { Link } from 'react-router-dom';
 
 export const Movie = ({

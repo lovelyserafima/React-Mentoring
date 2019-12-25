@@ -2,7 +2,7 @@ import {
     CHANGE_SEARCH, CHANGE_SORTING, SEARCH_BY_ID_SUCCESS, SEARCH_FAILURE, SEARCH_STARTED,
     UN_SELECT_MOVIE,
     UPDATE_SEARCH_VALUE
-} from "../redux/constants/action-types";
+} from "./constants/action-types";
 import {sortingTypeForDisplay, TITLE} from "../components/constants/CommonConstants";
 
 const initialState = {
@@ -11,7 +11,8 @@ const initialState = {
     searchValue: '',
     isSearching: false,
     error: false,
-    sortingType: sortingTypeForDisplay["release date"]
+    sortingType: sortingTypeForDisplay["release date"],
+    searchString: ''
 };
 
 export default function searchReducer(state = initialState, action) {

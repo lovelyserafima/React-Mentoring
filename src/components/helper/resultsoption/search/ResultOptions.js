@@ -4,11 +4,11 @@ import OptionButton from "../../optionbutton/OptionButton";
 import {sortingTypeForDisplay} from "../../../constants/CommonConstants";
 import {RATING} from "./ResultOptions.Constants";
 import { connect } from 'react-redux';
-import {changeSorting} from "../../../../redux/actions";
+import {changeSorting} from "../../../../modules/actions";
 
 const mapStateToProps = state => ({
     sortingType: state.searchReducer.sortingType,
-    dataSize: state.movieReducer.movies.length
+    dataSize: state.movieReducer.movies
 });
 
 export class ResultsOptions extends Component {
@@ -20,7 +20,7 @@ export class ResultsOptions extends Component {
         const { sortingType, dataSize } = this.props;
         return(
             <ResultsOptionsWrapper>
-                <Display>{dataSize} movies found</Display>
+                {/*<Display>{dataSize} movies found</Display>*/}
                 <ButtonsWrapper>
                     <Display>Sort by:</Display>
                     {[sortingTypeForDisplay["release date"], RATING].map(title => (

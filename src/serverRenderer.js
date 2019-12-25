@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
+//import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import Root from './Root';
 import configureStore from './modules/configureStore';
@@ -41,20 +42,27 @@ export default function serverRenderer() {
             />
         );
 
+        store.runSaga().done.then(() => {
+            const htmlString = ReactDOM.renderToString(renderRoot());
+
+            // context.url will contain the URL to redirect to if a <Redirect> was used
+            if (context.url) {
+                res.writeHead(302, {
+                    Location: context.url,
+                });
+                res.end();
+                return;
+            }
+
+            const preloadedState = store.getState();
+
+            res.send(renderHTML(htmlString, preloadedState));
+        });
+
+        // Do first render, starts initial actions.
         ReactDOM.renderToString(renderRoot());
-
-        // context.url will contain the URL to redirect to if a <Redirect> was used
-        if (context.url) {
-            res.writeHead(302, {
-                Location: context.url,
-            });
-            res.end();
-            return;
-        }
-
-        const htmlString = ReactDOM.renderToString(renderRoot());
-        const preloadedState = store.getState();
-
-        res.send(renderHTML(htmlString, preloadedState));
+        // When the first render is finished, send the END action to redux-saga.
+        console.log("in ssr");
+        store.close();
     };
 }

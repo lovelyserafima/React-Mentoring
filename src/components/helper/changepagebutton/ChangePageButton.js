@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { unSelectMovie } from '../../../redux/actions';
+import { unSelectMovie } from '../../../modules/actions';
 import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
 import { Link } from 'react-router-dom';
