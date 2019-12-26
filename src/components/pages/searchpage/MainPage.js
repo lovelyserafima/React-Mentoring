@@ -22,10 +22,6 @@ const mapStateToProps = state => ({
 
 export class MainPage extends Component {
 
-    componentWillMount() {
-        this.updatePage();
-    }
-
     componentDidMount() {
         this.updatePage();
     }
@@ -46,7 +42,6 @@ export class MainPage extends Component {
     };
 
     performSearch = searchString => {
-        console.log("in perform search");
         const { sortingType, searchOption, getSearchData, error } = this.props;
         console.log(sortingType, searchOption, getSearchData, error);
         getSearchData(
@@ -65,7 +60,6 @@ export class MainPage extends Component {
 
     render() {
         const { movies, sortingType} = this.props;
-        console.log("movies = " + movies);
         return (
             <SearchCSSGrid>
                 <HeaderCSSGrid>
@@ -74,7 +68,6 @@ export class MainPage extends Component {
                     <SearchForm handleFormSubmit={this.performSearch} />
                 </HeaderCSSGrid>
                 <ResultsOptions sortingType={sortingTypeForDisplay[sortingType]} />
-                {console.log("in return movies = " + movies)}
                 {movies === undefined ? (
                     <LoadingWrapper />
                 ) : (

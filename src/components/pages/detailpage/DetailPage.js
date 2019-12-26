@@ -15,9 +15,6 @@ const mapStateToProps = state => ({
 });
 
 class DetailPage extends Component {
-    componentWillMount() {
-        this.viewMovie();
-    }
 
     componentDidMount() {
         this.viewMovie();
