@@ -3,14 +3,22 @@ import {ButtonsWrapper, Display, InputWrapper, SearchButton, Wrapper} from "./Se
 import OptionButton from "../../helper/optionbutton/OptionButton";
 import {ENTER} from "./SearchForm.Constants";
 import {GENRES, TITLE} from "../../constants/CommonConstants";
+import { connect } from 'react-redux';
+import {changeSearch, updateSearchValue} from "../../../modules/actions";
 
-class SearchForm extends Component {
-    state = {
-        searchValue: ''
+const mapStateToProps = state => ({
+    searchOption: state.searchReducer.searchOption,
+    searchValue: state.searchReducer.searchValue
+});
+
+export class SearchForm extends Component {
+
+    changeSearch = text => {
+        this.props.changeSearch(text);
     };
 
     handleInputChange = event => {
-        this.setState({ searchValue: event.target.value });
+        this.props.updateSearchValue(event.target.value);
     };
 
     handleKeyPress = event => {
@@ -21,16 +29,16 @@ class SearchForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        this.props.handleFormSubmit(this.state.searchValue);
+        this.props.handleFormSubmit(this.props.searchValue);
     };
 
     render() {
-        const { searchOption, changeSearch } = this.props;
-        const { searchValue } = this.state;
+        const { searchOption, searchValue } = this.props;
         return (
             <Wrapper>
                 <form onSubmit={this.handleFormSubmit}>
                     <InputWrapper
+                        id="location"
                         placeholder="type something"
                         value={searchValue}
                         onChange={this.handleInputChange}
@@ -42,7 +50,7 @@ class SearchForm extends Component {
                         {[TITLE, GENRES].map(searchTitle => (
                             <OptionButton
                                 text={searchTitle}
-                                changeOption={changeSearch}
+                                changeOption={this.changeSearch}
                                 option={searchOption}
                                 key={searchTitle}
                             />
@@ -57,4 +65,7 @@ class SearchForm extends Component {
     }
 }
 
-export default SearchForm;
+export default connect(
+    mapStateToProps,
+    { changeSearch, updateSearchValue }
+)(SearchForm);

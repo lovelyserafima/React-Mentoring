@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageName renders 1`] = `
+<h1
+  className="PageNameStyles__H1-sc-1qlf1c5-0 ceydmR"
+/>
+`;

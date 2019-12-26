@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render correctly 1`] = `
+<ErrorBoundary>
+  <GlobalStyleComponent />
+  <Connect(DetailPage) />
+  <AppStyles__FooterWrapper>
+    <PageName
+      name="netflixroulette"
+    />
+  </AppStyles__FooterWrapper>
+</ErrorBoundary>
+`;

@@ -1,1 +1,0 @@
-// This folder is needed for future tests. You can see "test" script in "package.json"
