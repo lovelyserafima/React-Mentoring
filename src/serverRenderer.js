@@ -62,7 +62,6 @@ export default function serverRenderer() {
         // Do first render, starts initial actions.
         ReactDOM.renderToString(renderRoot());
         // When the first render is finished, send the END action to redux-saga.
-        console.log("in ssr");
         store.close();
     };
 }

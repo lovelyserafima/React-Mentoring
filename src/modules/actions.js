@@ -53,7 +53,6 @@ export function* watchGetSearchData() {
 }
 
 export function* getSearchDataAsync(action) {
-    console.log("sortingType = " + action.sortingType);
     const response = yield call(fetch, `https://reactjs-cdp.herokuapp.com/movies?search=${action.searchString}&sortBy=${action.sortingType}&searchBy=${action.searchOption}&sortOrder=desc&limit=12`);
     const movies = yield response.json();
 
@@ -62,16 +61,11 @@ export function* getSearchDataAsync(action) {
 
 export function* getMovieById(action) {
     const response = yield call(fetch, `https://reactjs-cdp.herokuapp.com/movies/${action.payload}`);
-    //console.log("movie = " + movie);
     const movie = yield response.json();
 
-    console.log("sdaasd");
-    console.log(movie.genres[0]);
     const moviesByGenreResponse = yield call(fetch, `https://reactjs-cdp.herokuapp.com/movies?search=${movie.genres[0]}&sortBy=release_date&searchBy=genres&sortOrder=desclimit=12`);
     const moviesByGenre = yield moviesByGenreResponse.json();
 
-    //yield put(receivedMovieInfo(movie));
-    console.log("2sdaasd");
     yield put(selectMovie(movie));
     yield put(receivedMovies(moviesByGenre));
 }
