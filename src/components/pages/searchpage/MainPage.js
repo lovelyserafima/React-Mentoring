@@ -7,7 +7,7 @@ import SearchForm from '../../header/searchform/SearchForm';
 import ResultsOptions from '../../helper/resultsoption/search/ResultOptions';
 import Results from '../../body/results/Results';
 import { sortingTypeForDisplay, sortingTypeForSearch } from '../../constants/CommonConstants';
-import history from '../../history';
+import history from '../../History';
 import LoadingWrapper from '../../helper/loading/Loading';
 import { getSearchData, updateSearchValue } from '../../../modules/actions';
 
@@ -31,21 +31,20 @@ class MainPage extends Component {
       const {
         sortingType,
         searchOption,
-        getSearchData,
-        updateSearchValue,
+        getSearchData: getSearchDataAction,
+        updateSearchValue: updateSearchValueAction,
       } = this.props;
       if (term && term !== searchValue) {
-        getSearchData(term, sortingTypeForSearch[sortingType], searchOption);
-        updateSearchValue(term);
+        getSearchDataAction(term, sortingTypeForSearch[sortingType], searchOption);
+        updateSearchValueAction(term);
       }
     };
 
     performSearch = (searchString) => {
       const {
-        sortingType, searchOption, getSearchData, error,
+        sortingType, searchOption, getSearchData: getSearchDataAction, error,
       } = this.props;
-      console.log(sortingType, searchOption, getSearchData, error);
-      getSearchData(
+      getSearchDataAction(
         searchString,
         sortingTypeForSearch[sortingType],
         searchOption,
@@ -55,7 +54,7 @@ class MainPage extends Component {
       history.push(`/search/${searchString}`);
 
       if (error) {
-        console.log('Search failed');
+        this.console.log('Search failed');
       }
     };
 
@@ -79,7 +78,7 @@ class MainPage extends Component {
     }
 }
 
-export default MainPage = connect(
+export default connect(
   mapStateToProps,
   { getSearchData, updateSearchValue },
 )(MainPage);

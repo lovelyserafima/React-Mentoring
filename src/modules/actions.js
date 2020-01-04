@@ -50,22 +50,24 @@ export const getSearchData = (searchString, sortingType, searchOption) => ({
 
 // Sagas
 
-export function* watchGetSearchData() {
-  yield takeLatest(FETCH_FROM_SEARCH, getSearchDataAsync);
-}
-
 export function* getSearchDataAsync(action) {
-  const response = yield call(fetch, `https://reactjs-cdp.herokuapp.com/movies?search=${action.searchString}&sortBy=${action.sortingType}&searchBy=${action.searchOption}&sortOrder=desc&limit=12`);
+  const response = yield call(fetch, `https://reactjs-cdp.herokuapp.com/movies?search=${action.searchString}`
+  + `&sortBy=${action.sortingType}&searchBy=${action.searchOption}&sortOrder=desc&limit=12`);
   const movies = yield response.json();
 
   yield put(receivedMovies(movies));
+}
+
+export function* watchGetSearchData() {
+  yield takeLatest(FETCH_FROM_SEARCH, getSearchDataAsync);
 }
 
 export function* getMovieById(action) {
   const response = yield call(fetch, `https://reactjs-cdp.herokuapp.com/movies/${action.payload}`);
   const movie = yield response.json();
 
-  const moviesByGenreResponse = yield call(fetch, `https://reactjs-cdp.herokuapp.com/movies?search=${movie.genres[0]}&sortBy=release_date&searchBy=genres&sortOrder=desclimit=12`);
+  const moviesByGenreResponse = yield call(fetch, `https://reactjs-cdp.herokuapp.com/movies?search=${movie.genres[0]}`
+  + '&sortBy=release_date&searchBy=genres&sortOrder=desclimit=12');
   const moviesByGenre = yield moviesByGenreResponse.json();
 
   yield put(selectMovie(movie));

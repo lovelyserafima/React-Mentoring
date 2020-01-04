@@ -4,7 +4,7 @@ import {
   ButtonsWrapper, Display, InputWrapper, SearchButton, Wrapper,
 } from './SearchForm.Styles';
 import OptionButton from '../../helper/optionbutton/OptionButton';
-import { ENTER } from './SearchForm.Constants';
+import ENTER from './SearchForm.Constants';
 import { GENRES, TITLE } from '../../constants/CommonConstants';
 import { changeSearch, updateSearchValue } from '../../../modules/actions';
 
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
   searchValue: state.searchReducer.searchValue,
 });
 
-export class SearchForm extends Component {
+class SearchForm extends Component {
     changeSearch = (text) => {
       this.props.changeSearch(text);
     };

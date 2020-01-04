@@ -21,9 +21,9 @@ class DetailPage extends Component {
 
     viewMovie = () => {
       const { id } = this.props.match.params;
-      const { viewMovieById } = this.props;
+      const { viewMovieById: viewMovieByIdAction } = this.props;
 
-      viewMovieById(id);
+      viewMovieByIdAction(id);
     };
 
     render() {
@@ -44,4 +44,4 @@ class DetailPage extends Component {
     }
 }
 
-export default DetailPage = connect(mapStateToProps, { viewMovieById })(DetailPage);
+export default connect(mapStateToProps, { viewMovieById })(DetailPage);

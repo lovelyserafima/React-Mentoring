@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+// because of  Expected 'this' to be used by class method 'render'  class-methods-use-this
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import MainPage from './pages/searchpage/MainPage';

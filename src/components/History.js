@@ -1,3 +1,5 @@
+/* eslint-disable import/no-mutable-exports */
+// because error  Exporting mutable 'let' binding, use 'const' instead  import/no-mutable-exports
 import { createBrowserHistory } from 'history';
 
 let history;

@@ -12,7 +12,8 @@ function renderHTML(html, preloadedState) {
         <head>
           <meta charset=utf-8>
           <title>Movies app</title>
-          ${process.env.NODE_ENV === 'development' ? '' : '<link href="/css/main.css" rel="stylesheet" type="text/css">'}
+          ${process.env.NODE_ENV === 'development' ? ''
+    : '<link href="/css/main.css" rel="stylesheet" type="text/css">'}
         </head>
         <body>
           <div id="root">${html}</div>
