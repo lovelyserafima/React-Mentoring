@@ -1,40 +1,41 @@
 import React, { Component } from 'react';
-import {ButtonsWrapper, Display, InputWrapper, SearchButton, Wrapper} from "./SearchForm.Styles";
-import OptionButton from "../../helper/optionbutton/OptionButton";
-import {ENTER} from "./SearchForm.Constants";
-import {GENRES, TITLE} from "../../constants/CommonConstants";
 import { connect } from 'react-redux';
-import {changeSearch, updateSearchValue} from "../../../modules/actions";
+import {
+  ButtonsWrapper, Display, InputWrapper, SearchButton, Wrapper,
+} from './SearchForm.Styles';
+import OptionButton from '../../helper/optionbutton/OptionButton';
+import { ENTER } from './SearchForm.Constants';
+import { GENRES, TITLE } from '../../constants/CommonConstants';
+import { changeSearch, updateSearchValue } from '../../../modules/actions';
 
-const mapStateToProps = state => ({
-    searchOption: state.searchReducer.searchOption,
-    searchValue: state.searchReducer.searchValue
+const mapStateToProps = (state) => ({
+  searchOption: state.searchReducer.searchOption,
+  searchValue: state.searchReducer.searchValue,
 });
 
 export class SearchForm extends Component {
-
-    changeSearch = text => {
-        this.props.changeSearch(text);
+    changeSearch = (text) => {
+      this.props.changeSearch(text);
     };
 
-    handleInputChange = event => {
-        this.props.updateSearchValue(event.target.value);
+    handleInputChange = (event) => {
+      this.props.updateSearchValue(event.target.value);
     };
 
-    handleKeyPress = event => {
-        if (event.key === ENTER) {
-            this.handleFormSubmit(event);
-        }
+    handleKeyPress = (event) => {
+      if (event.key === ENTER) {
+        this.handleFormSubmit(event);
+      }
     };
 
-    handleFormSubmit = event => {
-        event.preventDefault();
-        this.props.handleFormSubmit(this.props.searchValue);
+    handleFormSubmit = (event) => {
+      event.preventDefault();
+      this.props.handleFormSubmit(this.props.searchValue);
     };
 
     render() {
-        const { searchOption, searchValue } = this.props;
-        return (
+      const { searchOption, searchValue } = this.props;
+      return (
             <Wrapper>
                 <form onSubmit={this.handleFormSubmit}>
                     <InputWrapper
@@ -47,7 +48,7 @@ export class SearchForm extends Component {
 
                     <ButtonsWrapper>
                         <Display>Search by: </Display>
-                        {[TITLE, GENRES].map(searchTitle => (
+                        {[TITLE, GENRES].map((searchTitle) => (
                             <OptionButton
                                 text={searchTitle}
                                 changeOption={this.changeSearch}
@@ -61,11 +62,11 @@ export class SearchForm extends Component {
                     </ButtonsWrapper>
                 </form>
             </Wrapper>
-        );
+      );
     }
 }
 
 export default connect(
-    mapStateToProps,
-    { changeSearch, updateSearchValue }
+  mapStateToProps,
+  { changeSearch, updateSearchValue },
 )(SearchForm);

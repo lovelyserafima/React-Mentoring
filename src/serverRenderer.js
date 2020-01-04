@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-//import { renderToString } from 'react-dom/server';
+// import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import Root from './Root';
 import configureStore from './modules/configureStore';
 
 function renderHTML(html, preloadedState) {
-    return `
+  return `
       <!doctype html>
       <html>
         <head>
@@ -28,40 +28,40 @@ function renderHTML(html, preloadedState) {
 }
 
 export default function serverRenderer() {
-    return (req, res) => {
-        const store = configureStore();
-        // This context object contains the results of the render
-        const context = {};
+  return (req, res) => {
+    const store = configureStore();
+    // This context object contains the results of the render
+    const context = {};
 
-        const renderRoot = () => (
+    const renderRoot = () => (
             <Root
                 context={context}
                 location={req.url}
                 Router={StaticRouter}
                 store={store}
             />
-        );
+    );
 
-        store.runSaga().done.then(() => {
-            const htmlString = ReactDOM.renderToString(renderRoot());
+    store.runSaga().done.then(() => {
+      const htmlString = ReactDOM.renderToString(renderRoot());
 
-            // context.url will contain the URL to redirect to if a <Redirect> was used
-            if (context.url) {
-                res.writeHead(302, {
-                    Location: context.url,
-                });
-                res.end();
-                return;
-            }
-
-            const preloadedState = store.getState();
-
-            res.send(renderHTML(htmlString, preloadedState));
+      // context.url will contain the URL to redirect to if a <Redirect> was used
+      if (context.url) {
+        res.writeHead(302, {
+          Location: context.url,
         });
+        res.end();
+        return;
+      }
 
-        // Do first render, starts initial actions.
-        ReactDOM.renderToString(renderRoot());
-        // When the first render is finished, send the END action to redux-saga.
-        store.close();
-    };
+      const preloadedState = store.getState();
+
+      res.send(renderHTML(htmlString, preloadedState));
+    });
+
+    // Do first render, starts initial actions.
+    ReactDOM.renderToString(renderRoot());
+    // When the first render is finished, send the END action to redux-saga.
+    store.close();
+  };
 }

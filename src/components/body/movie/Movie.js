@@ -1,21 +1,23 @@
 import React from 'react';
-import MovieTileWrapper from "./Movie.Styles";
-import MoviePoster from "../movieposter/MoviePoster";
-import MovieInfo from "../movieinfo/MovieInfo";
-import MovieGenre from "../moviegenre/MovieGenre";
 import { connect } from 'react-redux';
-import {selectMovie} from "../../../modules/actions";
 import { Link } from 'react-router-dom';
+import MovieTileWrapper from './Movie.Styles';
+import MoviePoster from '../movieposter/MoviePoster';
+import MovieInfo from '../movieinfo/MovieInfo';
+import MovieGenre from '../moviegenre/MovieGenre';
+import { selectMovie } from '../../../modules/actions';
 
-export const Movie = ({
+const Movie = ({
   data,
-  data: { poster_path, title, release_date, genres, id },
-  selectMovie
+  data: {
+    poster_path: posterPath, title, release_date: releaseDate, genres, id,
+  },
+  selectMovie: selectMovieAction,
 }) => (
-    <Link onClick={() => selectMovie(data)} to={`/film/${id}`}>
+    <Link onClick={() => selectMovieAction(data)} to={`/film/${id}`}>
         <MovieTileWrapper>
-            <MoviePoster posterImage={poster_path} />
-            <MovieInfo title={title} release_date={release_date} />
+            <MoviePoster posterImage={posterPath} />
+            <MovieInfo title={title} release_date={releaseDate} />
             <MovieGenre genres={genres} />
         </MovieTileWrapper>
     </Link>
@@ -23,6 +25,6 @@ export const Movie = ({
 );
 
 export default connect(
-    null,
-    { selectMovie }
+  null,
+  { selectMovie },
 )(Movie);

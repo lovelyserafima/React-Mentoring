@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { unSelectMovie } from '../../../modules/actions';
-import SearchIcon from "@material-ui/icons/Search";
-import IconButton from "@material-ui/core/IconButton";
+import SearchIcon from '@material-ui/icons/Search';
+import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom';
+import { unSelectMovie } from '../../../modules/actions';
 
 export const ChangePageButton = ({ unSelectMovie }) => (
     <Link to="/" onClick={() => unSelectMovie()}>
@@ -14,6 +14,6 @@ export const ChangePageButton = ({ unSelectMovie }) => (
 );
 
 export default connect(
-    null,
-    { unSelectMovie }
+  null,
+  { unSelectMovie },
 )(ChangePageButton);

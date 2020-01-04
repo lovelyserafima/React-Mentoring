@@ -1,9 +1,9 @@
 import React from 'react';
-import MovieGenreWrapper from "./MovieGenre.Styles";
+import MovieGenreWrapper from './MovieGenre.Styles';
 
 const MovieGenre = ({ genres }) => (
     <MovieGenreWrapper>
-        {genres.map(genre => (
+        {genres.map((genre) => (
             <span key={genre}>{`${genre} `}</span>
         ))}
     </MovieGenreWrapper>

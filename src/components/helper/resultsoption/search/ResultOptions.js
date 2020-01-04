@@ -1,29 +1,29 @@
-import React, {Component} from 'react';
-import {ButtonsWrapper, Display, ResultsOptionsWrapper} from "./ResultOptions.Styles";
-import OptionButton from "../../optionbutton/OptionButton";
-import {sortingTypeForDisplay} from "../../../constants/CommonConstants";
-import {RATING} from "./ResultOptions.Constants";
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {changeSorting} from "../../../../modules/actions";
+import { ButtonsWrapper, Display, ResultsOptionsWrapper } from './ResultOptions.Styles';
+import OptionButton from '../../optionbutton/OptionButton';
+import { sortingTypeForDisplay } from '../../../constants/CommonConstants';
+import { RATING } from './ResultOptions.Constants';
+import { changeSorting } from '../../../../modules/actions';
 
-const mapStateToProps = state => ({
-    sortingType: state.searchReducer.sortingType,
-    dataSize: state.movieReducer.movies
+const mapStateToProps = (state) => ({
+  sortingType: state.searchReducer.sortingType,
+  dataSize: state.movieReducer.movies,
 });
 
 export class ResultsOptions extends Component {
-    changeSorting = text => {
-        this.props.changeSorting(text);
+    changeSorting = (text) => {
+      this.props.changeSorting(text);
     };
 
     render() {
-        const { sortingType, dataSize } = this.props;
-        return(
+      const { sortingType, dataSize } = this.props;
+      return (
             <ResultsOptionsWrapper>
-                {/*<Display>{dataSize} movies found</Display>*/}
+                {/* <Display>{dataSize} movies found</Display> */}
                 <ButtonsWrapper>
                     <Display>Sort by:</Display>
-                    {[sortingTypeForDisplay["release date"], RATING].map(title => (
+                    {[sortingTypeForDisplay['release date'], RATING].map((title) => (
                         <OptionButton
                             text={title}
                             changeOption={this.changeSorting}
@@ -33,11 +33,11 @@ export class ResultsOptions extends Component {
                     ))}
                 </ButtonsWrapper>
             </ResultsOptionsWrapper>
-        )
+      );
     }
 }
 
 export default connect(
-    mapStateToProps,
-    { changeSorting }
+  mapStateToProps,
+  { changeSorting },
 )(ResultsOptions);

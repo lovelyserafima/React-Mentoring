@@ -1,17 +1,17 @@
 import React from 'react';
-import MoviePoster from "../body/movieposter/MoviePoster";
+import MoviePoster from '../body/movieposter/MoviePoster';
 import {
-    DetailsWrapper,
-    InfoWrapper,
-    MovieData,
-    MovieRating,
-    MovieSummary,
-    MovieTitle
-} from "./MovieDetails.Styles";
+  DetailsWrapper,
+  InfoWrapper,
+  MovieData,
+  MovieRating,
+  MovieSummary,
+  MovieTitle,
+} from './MovieDetails.Styles';
 
 const MovieDetails = ({ details }) => {
-    const releaseDate = details.release_date.slice(0, 4);
-    return (
+  const releaseDate = details.release_date.slice(0, 4);
+  return (
         <DetailsWrapper>
             <MoviePoster posterImage={details.poster_path} />
             <InfoWrapper>
@@ -23,7 +23,7 @@ const MovieDetails = ({ details }) => {
                 <MovieSummary> {details.overview} </MovieSummary>
             </InfoWrapper>
         </DetailsWrapper>
-    );
+  );
 };
 
 export default MovieDetails;
