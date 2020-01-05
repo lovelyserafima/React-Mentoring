@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchForm should render correctly 1`] = `
+<SearchFormStyles__Wrapper>
+  <form
+    onSubmit={[Function]}
+  >
+    <SearchFormStyles__InputWrapper
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      placeholder="type something"
+      value=""
+    />
+    <SearchFormStyles__ButtonsWrapper>
+      <SearchFormStyles__Display>
+        Search by: 
+      </SearchFormStyles__Display>
+      <OptionButton
+        key="title"
+        text="title"
+      />
+      <OptionButton
+        key="genres"
+        text="genres"
+      />
+      <SearchFormStyles__SearchButton
+        type="submit"
+      >
+        Search
+      </SearchFormStyles__SearchButton>
+    </SearchFormStyles__ButtonsWrapper>
+  </form>
+</SearchFormStyles__Wrapper>
+`;

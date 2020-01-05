@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieDetails should render correctly 1`] = `
+<MovieDetailsStyles__DetailsWrapper>
+  <MoviePoster
+    posterImage="https://image.tmdb.org/t/p/w500/syPWyeeqzTQIxjIUaIFI7d0TyEY.jpg"
+  />
+  <MovieDetailsStyles__InfoWrapper>
+    <MovieDetailsStyles__MovieTitle>
+      Finding Nemo
+    </MovieDetailsStyles__MovieTitle>
+    <MovieDetailsStyles__MovieRating>
+      Rating: 
+      7.7
+    </MovieDetailsStyles__MovieRating>
+    <MovieDetailsStyles__MovieData>
+      2003
+       - 
+      100
+      min
+    </MovieDetailsStyles__MovieData>
+    <MovieDetailsStyles__MovieSummary>
+       
+      Nemo, an adventurous young clownfish, is unexpectedly taken from his Great Barrier Reef home to a dentist's office aquarium. It's up to his worrisome father Marlin and a friendly but forgetful fish Dory to bring Nemo home -- meeting vegetarian sharks, surfer dude turtles, hypnotic jellyfish, hungry seagulls, and more along the way.
+       
+    </MovieDetailsStyles__MovieSummary>
+  </MovieDetailsStyles__InfoWrapper>
+</MovieDetailsStyles__DetailsWrapper>
+`;

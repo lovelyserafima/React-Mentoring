@@ -6,8 +6,7 @@ const Button = styled.button`
   margin: 4px 10px 4px 10px;
   padding: 2px 10px 2px 10px;
   font-size: 14px;
-  background-color: ${props =>
-    props.option === props.text ? 'salmon' : '#444'};
+  background-color: ${(props) => (props.option === props.text ? 'salmon' : '#444')};
   border: 0;
   border-radius: 4px;
   text-transform: uppercase;

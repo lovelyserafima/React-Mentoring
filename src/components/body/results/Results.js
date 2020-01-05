@@ -1,10 +1,10 @@
 import React from 'react';
-import ResultsWrapper from "./ResultsWrapper.Styles";
-import Movie from "../movie/Movie";
+import ResultsWrapper from './ResultsWrapper.Styles';
+import Movie from '../movie/Movie';
 
 const Results = ({ results }) => (
     <ResultsWrapper>
-        {results.map(result => (
+        {results.map((result) => (
             <Movie key={result.id} data={result}/>
         ))}
     </ResultsWrapper>

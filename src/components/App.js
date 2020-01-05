@@ -1,42 +1,22 @@
+/* eslint-disable class-methods-use-this */
+// because of  Expected 'this' to be used by class method 'render'  class-methods-use-this
 import React, { Component } from 'react';
-import ErrorBoundary from "./ErrorBoundary";
-import MainPage from "./pages/searchpage/MainPage";
-import DetailPage from "./pages/detailpage/DetailPage";
-import {ChangePageWrapper, FooterWrapper} from "./App.Styles";
-import ChangePageButton from "./helper/changepagebutton/ChangePageButton";
-import GlobalStyle from "./Global.Styles";
-import PageName from "./header/pagename/PageName";
-import {DETAILS_PAGE, MAIN_PAGE} from "./AppConstants";
+import { Route, Switch } from 'react-router-dom';
+import MainPage from './pages/searchpage/MainPage';
+import DetailPage from './pages/detailpage/DetailPage';
+import NotFoundPage from './pages/notfound/NotFound';
 
-class App extends Component {
-    state = {
-        pageType: MAIN_PAGE
-    };
-
-    changePage = () => {
-        const { pageType } = this.state;
-        const newType = pageType === MAIN_PAGE ? DETAILS_PAGE : MAIN_PAGE;
-        this.setState(() => ({ pageType: newType }));
-    };
-
-    render() {
-        const { pageType } = this.state;
-        return (
-            <ErrorBoundary>
-                <GlobalStyle />
-                {pageType === MAIN_PAGE ? <MainPage /> : <DetailPage changePage={this.changePage} />}
-
-                {/*this is temporarily functionality*/}
-                <ChangePageWrapper>
-                    <ChangePageButton changePage={this.changePage} />
-                </ChangePageWrapper>
-
-                <FooterWrapper>
-                    <PageName name={'netflixroulette'}/>
-                </FooterWrapper>
-            </ErrorBoundary>
-        );
-    }
+export default class App extends Component {
+  render() {
+    return (
+      <>
+                <Switch>
+                    <Route path="/" exact component={MainPage} />
+                    <Route path="/search/:term" component={MainPage} />
+                    <Route path="/film/:id" component={DetailPage} />
+                    <Route path="*" component={NotFoundPage} />
+                </Switch>
+      </>
+    );
+  }
 }
-
-export default App;

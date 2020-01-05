@@ -1,5 +1,5 @@
 import React from 'react';
-import {Img, PosterWrapper} from "./MoviePoster.Styles";
+import { Img, PosterWrapper } from './MoviePoster.Styles';
 
 const MoviePoster = ({ posterImage }) => (
     <PosterWrapper>

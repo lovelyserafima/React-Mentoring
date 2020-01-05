@@ -1,57 +1,47 @@
 import React, { Component } from 'react';
-import Detail, {HeaderCSSGrid} from "./DetailPage.Styles";
-import MovieDetails from "../../details/MovieDetails";
-import PageName from "../../header/pagename/PageName";
-import SearchIcon from "@material-ui/icons/Search";
-import IconButton from "@material-ui/core/IconButton";
-import ResultsOptions from "../../helper/resultsoption/genre/ResultsOptionsGenre";
-import Results from "../../body/results/Results";
-import {fetchByGenres, fetchById} from "../../../util/dataloader/dataLoader";
+import { connect } from 'react-redux';
+import Detail, { HeaderCSSGrid } from './DetailPage.Styles';
+import MovieDetails from '../../details/MovieDetails';
+import PageName from '../../header/pagename/PageName';
+import ResultsOptions from '../../helper/resultsoption/genre/ResultsOptionsGenre';
+import Results from '../../body/results/Results';
+import ChangePageButton from '../../helper/changepagebutton/ChangePageButton';
+import { viewMovieById } from '../../../modules/actions';
+import LoadingWrapper from '../../helper/loading/Loading';
+
+const mapStateToProps = (state) => ({
+  selectedMovie: state.movieReducer.selectedMovie,
+  movies: state.movieReducer.movies,
+});
 
 class DetailPage extends Component {
-    state = {
-        movie: '',
-        similarMovies: '',
-        selectedGenre: ''
-    };
+  componentDidMount() {
+    this.viewMovie();
+  }
 
-    componentDidMount = () => {
-        fetchById(15).then(data => {
-            this.setState(() => ({ movie: data }));
-            this.fetchSimilarMovies(data.genres[0]);
-        });
-    };
+    viewMovie = () => {
+      const { id } = this.props.match.params;
+      const { viewMovieById: viewMovieByIdAction } = this.props;
 
-    fetchSimilarMovies(genre) {
-        fetchByGenres(genre)
-            .then(response => {
-                this.setState({
-                    similarMovies: response.data,
-                    selectedGenre: genre
-                });
-            });
-    }
+      viewMovieByIdAction(id);
+    };
 
     render() {
-        const { movie, similarMovies, selectedGenre} = this.state;
-        return (
+      const { selectedMovie, movies } = this.props;
+      return (
             <div>
                 <HeaderCSSGrid>
                     <PageName name={'netflixroulette'}/>
                     <Detail>
-                        {movie ? <MovieDetails details={movie} /> : <p>loading</p>}
+                        {selectedMovie ? <MovieDetails details={selectedMovie} /> : <LoadingWrapper />}
                     </Detail>
-                    <IconButton onClick={this.props.changePage}>
-                        <SearchIcon color="secondary"/>
-                    </IconButton>
+                    <ChangePageButton />
                 </HeaderCSSGrid>
-                <ResultsOptions
-                    genre={selectedGenre}
-                />
-                {similarMovies ? <Results results={this.state.similarMovies} /> : <p>loading</p>}
+                {!selectedMovie ? <LoadingWrapper/> : <ResultsOptions genre={ selectedMovie.genres[0] } />}
+                {!movies ? <LoadingWrapper/> : <Results results={movies} />}
             </div>
-        );
+      );
     }
 }
 
-export default DetailPage;
+export default connect(mapStateToProps, { viewMovieById })(DetailPage);
