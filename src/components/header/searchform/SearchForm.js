@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   ButtonsWrapper, Display, InputWrapper, SearchButton, Wrapper,
 } from './SearchForm.Styles';
@@ -65,6 +66,14 @@ class SearchForm extends Component {
       );
     }
 }
+
+SearchForm.propTypes = {
+  searchOption: PropTypes.string.isRequired,
+  searchValue: PropTypes.string,
+  changeSearch: PropTypes.func.isRequired,
+  updateSearchValue: PropTypes.func.isRequired,
+  handleFormSubmit: PropTypes.func.isRequired,
+};
 
 export default connect(
   mapStateToProps,

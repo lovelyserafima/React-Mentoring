@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import PageName from '../../header/pagename/PageName';
 import FormTitle from '../../header/formtitle/FormTitle';
 import { HeaderCSSGrid, SearchCSSGrid } from './MainPage.Styles';
@@ -77,6 +78,21 @@ class MainPage extends Component {
       );
     }
 }
+
+MainPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      term: PropTypes.string,
+    }),
+  }),
+  searchValue: PropTypes.string,
+  sortingType: PropTypes.string,
+  searchOption: PropTypes.string,
+  getSearchData: PropTypes.func.isRequired,
+  updateSearchValue: PropTypes.func.isRequired,
+  movies: PropTypes.array,
+  error: PropTypes.bool,
+};
 
 export default connect(
   mapStateToProps,

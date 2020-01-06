@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -23,6 +24,11 @@ const Movie = ({
     </Link>
 
 );
+
+Movie.propTypes = {
+  data: PropTypes.object.isRequired,
+  selectMovie: PropTypes.func,
+};
 
 export default connect(
   null,

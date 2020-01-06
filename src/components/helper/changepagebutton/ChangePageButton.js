@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { unSelectMovie } from '../../../modules/actions';
 
 const ChangePageButton = ({ unSelectMovie: unSelectMovieAction }) => (
@@ -12,6 +13,10 @@ const ChangePageButton = ({ unSelectMovie: unSelectMovieAction }) => (
         </IconButton>
     </Link>
 );
+
+ChangePageButton.propTypes = {
+  unSelectMovie: PropTypes.func.isRequired,
+};
 
 export default connect(
   null,

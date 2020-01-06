@@ -2,11 +2,11 @@
   "parser": "babel-eslint",
   "rules": {
     "max-len": [1, 120, 2, {"ignoreComments":  true}],
-    "prop-types": [2],
+    "react/prop-types": [2],
     "global-require": 0
   },
   "extends": ["airbnb-base", "plugin:react/recommended"],
-  "ignorePatterns": ["public/", "*.test.js"],
+  "ignorePatterns": ["public/", "*.test.js", "storybook-static/"],
   "env": {
     "browser": true
   }

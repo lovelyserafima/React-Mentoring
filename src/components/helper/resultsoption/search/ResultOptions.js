@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { ButtonsWrapper, Display, ResultsOptionsWrapper } from './ResultOptions.Styles';
 import OptionButton from '../../optionbutton/OptionButton';
 import { sortingTypeForDisplay } from '../../../constants/CommonConstants';
@@ -36,6 +37,12 @@ class ResultsOptions extends Component {
       );
     }
 }
+
+ResultsOptions.propTypes = {
+  sortingType: PropTypes.string,
+  changeSorting: PropTypes.func.isRequired,
+  movies: PropTypes.array,
+};
 
 export default connect(
   mapStateToProps,

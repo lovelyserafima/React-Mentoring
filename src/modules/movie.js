@@ -8,7 +8,7 @@ import {
 const initialState = {
   movies: [],
   similarMovies: [],
-  selectedMovie: '',
+  selectedMovie: null,
 };
 
 export default function movieReducer(state = initialState, action) {

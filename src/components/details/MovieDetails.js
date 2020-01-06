@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MoviePoster from '../body/movieposter/MoviePoster';
 import {
   DetailsWrapper,
@@ -24,6 +25,10 @@ const MovieDetails = ({ details }) => {
             </InfoWrapper>
         </DetailsWrapper>
   );
+};
+
+MovieDetails.propTypes = {
+  details: PropTypes.object.isRequired,
 };
 
 export default MovieDetails;

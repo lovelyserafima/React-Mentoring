@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import MovieGenreWrapper from './MovieGenre.Styles';
 
@@ -8,5 +9,9 @@ const MovieGenre = ({ genres }) => (
         ))}
     </MovieGenreWrapper>
 );
+
+MovieGenre.propTypes = {
+  genres: PropTypes.array,
+};
 
 export default MovieGenre;

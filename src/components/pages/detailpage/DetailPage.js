@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Detail, { HeaderCSSGrid } from './DetailPage.Styles';
 import MovieDetails from '../../details/MovieDetails';
 import PageName from '../../header/pagename/PageName';
@@ -43,5 +44,16 @@ class DetailPage extends Component {
       );
     }
 }
+
+DetailPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+  viewMovieById: PropTypes.func.isRequired,
+  selectedMovie: PropTypes.object,
+  movies: PropTypes.array,
+};
 
 export default connect(mapStateToProps, { viewMovieById })(DetailPage);
