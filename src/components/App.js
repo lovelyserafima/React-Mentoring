@@ -1,35 +1,29 @@
 import React, { Component } from 'react';
 import ErrorBoundary from "./ErrorBoundary";
 import MainPage from "./pages/searchpage/MainPage";
-import DetailPage from "./pages/detailpage/DetailPage";
-import {ChangePageWrapper, FooterWrapper} from "./App.Styles";
-import ChangePageButton from "./helper/changepagebutton/ChangePageButton";
+import {DetailPageContainer} from "./pages/detailpage/DetailPage";
+import {FooterWrapper} from "./App.Styles";
 import GlobalStyle from "./Global.Styles";
 import PageName from "./header/pagename/PageName";
-import {DETAILS_PAGE, MAIN_PAGE} from "./AppConstants";
+import { connect } from 'react-redux';
 
-class App extends Component {
-    state = {
-        pageType: MAIN_PAGE
-    };
+const mapStateToProps = state => ({
+    selectedMovie: state.movieReducer.selectedMovie
+});
 
-    changePage = () => {
-        const { pageType } = this.state;
-        const newType = pageType === MAIN_PAGE ? DETAILS_PAGE : MAIN_PAGE;
-        this.setState(() => ({ pageType: newType }));
-    };
+export class App extends Component {
 
     render() {
-        const { pageType } = this.state;
+        const { selectedMovie } = this.props;
+        {console.log(selectedMovie)}
         return (
             <ErrorBoundary>
                 <GlobalStyle />
-                {pageType === MAIN_PAGE ? <MainPage /> : <DetailPage changePage={this.changePage} />}
-
-                {/*this is temporarily functionality*/}
-                <ChangePageWrapper>
-                    <ChangePageButton changePage={this.changePage} />
-                </ChangePageWrapper>
+                {selectedMovie === '' ? (
+                    <MainPage />
+                ) : (
+                    <DetailPageContainer movieData={selectedMovie} />
+                )}
 
                 <FooterWrapper>
                     <PageName name={'netflixroulette'}/>
@@ -39,4 +33,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);

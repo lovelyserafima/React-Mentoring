@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieInfo should render correctly 1`] = `
+<MovieInfoStyles__MovieInfoWrapper>
+  <MovieInfoStyles__Title>
+    Finding Nemo
+  </MovieInfoStyles__Title>
+  <MovieInfoStyles__Year>
+    2003
+  </MovieInfoStyles__Year>
+</MovieInfoStyles__MovieInfoWrapper>
+`;

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultsOptionsSearch renders 1`] = `
+<div
+  className="ResultOptionsStyles__ResultsOptionsWrapper-sc-2ncvx-0 DjEDX"
+>
+  <p
+    className="ResultOptionsStyles__Display-sc-2ncvx-2 eInEox"
+  >
+    Films by 
+     genre
+  </p>
+</div>
+`;
