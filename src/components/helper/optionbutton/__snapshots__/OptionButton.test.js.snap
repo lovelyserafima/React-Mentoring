@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OptionButton should render correctly 1`] = `
+<OptionButtonStyles__Button
+  onClick={[Function]}
+/>
+`;
